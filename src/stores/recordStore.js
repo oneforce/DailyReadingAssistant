@@ -1,20 +1,31 @@
 import { create } from 'zustand'
-import { saveRecording, loadAllRecordings } from '../utils/db'
-import { uploadToQiniu } from '../utils/qiniu'
+import pb from '../utils/pb'
 
 const useRecordStore = create((set, get) => ({
   recordings: {},
   loaded: false,
   uploading: {},
 
-  // Load all recordings from IndexedDB on app start
+  // Load all recordings from PocketBase on app start
   loadFromDB: async () => {
     if (get().loaded) return
     try {
-      const map = await loadAllRecordings()
+      const records = await pb.collection('recordings').getFullList();
+      const map = {};
+      records.forEach(r => {
+         const key = `${r.taskId}-${r.subKey}`;
+         const remoteUrl = pb.files.getUrl(r, r.audio);
+         // Keep blob null for remote records, just use remoteUrl as the `url` for audio playback
+         map[key] = { 
+           url: remoteUrl, 
+           remoteUrl, 
+           duration: r.duration, 
+           timestamp: new Date(r.updated).getTime() 
+         }
+      });
       set({ recordings: map, loaded: true })
     } catch (e) {
-      console.error('Failed to load recordings from DB:', e)
+      console.error('Failed to load recordings from PB:', e)
       set({ loaded: true })
     }
   },
@@ -23,7 +34,7 @@ const useRecordStore = create((set, get) => ({
     const key = `${taskId}-${reqId}`
     const localUrl = URL.createObjectURL(blob)
 
-    // Immediately available with local URL
+    // Immediately available for UI feedback
     set((s) => ({
       recordings: {
         ...s.recordings,
@@ -32,39 +43,39 @@ const useRecordStore = create((set, get) => ({
       uploading: { ...s.uploading, [key]: true },
     }))
 
-    // Save to IndexedDB for offline persistence
+    // Upload blob to PocketBase
     try {
-      await saveRecording(key, blob, duration)
-    } catch (e) {
-      console.error('Failed to save recording to DB:', e)
-    }
+      const formData = new FormData();
+      formData.append('taskId', taskId);
+      formData.append('subKey', reqId);
+      formData.append('duration', duration || 0);
 
-    // Upload to Qiniu
-    try {
-      const result = await uploadToQiniu(blob, taskId, reqId)
-      if (result) {
-        set((s) => ({
-          recordings: {
-            ...s.recordings,
-            [key]: { ...s.recordings[key], remoteUrl: result.url, qiniuKey: result.key, uploading: false },
-          },
-          uploading: { ...s.uploading, [key]: false },
-        }))
-        console.log(`[Qiniu] Uploaded: ${result.url}`)
-      } else {
-        set((s) => ({
-          recordings: {
-            ...s.recordings,
-            [key]: { ...s.recordings[key], uploading: false },
-          },
-          uploading: { ...s.uploading, [key]: false },
-        }))
+      // WebM is default for browser MediaRecorder
+      const ext = blob.type.includes('mp4') ? 'mp4' : 'webm';
+      formData.append('audio', blob, `${key}.${ext}`);
+
+      // Optional: Check and remove existing record to prevent duplicates
+      const existing = await pb.collection('recordings').getList(1, 1, { 
+        filter: `taskId="${taskId}" && subKey="${reqId}"` 
+      });
+      if (existing.items.length > 0) {
+        await pb.collection('recordings').delete(existing.items[0].id);
       }
-    } catch (e) {
-      console.error('[Qiniu] Upload failed:', e)
+
+      // Create new record
+      const created = await pb.collection('recordings').create(formData);
+      const pbUrl = pb.files.getUrl(created, created.audio);
+
       set((s) => ({
+        recordings: {
+          ...s.recordings,
+          [key]: { ...s.recordings[key], remoteUrl: pbUrl, uploading: false },
+        },
         uploading: { ...s.uploading, [key]: false },
       }))
+    } catch (e) {
+      console.error('Failed to upload recording to PB:', e)
+      set((s) => ({ uploading: { ...s.uploading, [key]: false } }))
     }
 
     return localUrl

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
@@ -13,14 +13,25 @@ import CourseManagerPage from './pages/CourseManagerPage'
 import SettingsPage from './pages/SettingsPage'
 import CalendarHistoryPage from './pages/CalendarHistoryPage'
 import useRecordStore from './stores/recordStore'
+import useTaskStore from './stores/taskStore'
 
 export default function App() {
   const loadFromDB = useRecordStore((s) => s.loadFromDB)
-  const loaded = useRecordStore((s) => s.loaded)
+  const fetchTasks = useTaskStore((s) => s.fetchTasks)
+  const [appReady, setAppReady] = useState(false)
 
-  useEffect(() => { loadFromDB() }, [])
+  useEffect(() => {
+    async function init() {
+      await fetchTasks()
+      // Note: records load asynchronously, but we don't strictly block render on audio blobs,
+      // However, we wait for it so the UI has the remoteUrls populated.
+      await loadFromDB()
+      setAppReady(true)
+    }
+    init()
+  }, [])
 
-  if (!loaded) {
+  if (!appReady) {
     return (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', background: '#f6f7f8' }}>
         <p style={{ fontSize: 16, color: '#94a3b8' }}>加载中...</p>

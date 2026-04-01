@@ -1,0 +1,10 @@
+node_modules
+.git
+.env*
+.DS_Store
+dist
+dist-ssr
+*.local
+package-lock.json
+*.log
+init_pb.mjs

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import useUserStore from '../stores/userStore'
 
@@ -12,6 +13,25 @@ export default function Layout() {
   const location = useLocation()
   const navigate = useNavigate()
   const user = useUserStore((s) => s.user)
+  const [deferredPrompt, setDeferredPrompt] = useState(null)
+
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault()
+      setDeferredPrompt(e)
+    }
+    window.addEventListener('beforeinstallprompt', handler)
+    return () => window.removeEventListener('beforeinstallprompt', handler)
+  }, [])
+
+  const handleInstall = async () => {
+    if (!deferredPrompt) return
+    deferredPrompt.prompt()
+    const { outcome } = await deferredPrompt.userChoice
+    if (outcome === 'accepted') {
+      setDeferredPrompt(null)
+    }
+  }
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -33,6 +53,20 @@ export default function Layout() {
           <h2 style={{ fontSize: 18, fontWeight: 800, letterSpacing: '-0.02em' }}>朗读小助手</h2>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          {deferredPrompt && (
+            <button
+              onClick={handleInstall}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 4,
+                padding: '6px 12px', borderRadius: 16, border: 'none',
+                background: '#10b981', color: '#fff', cursor: 'pointer',
+                fontWeight: 'bold', fontSize: 13, boxShadow: '0 2px 8px rgba(16,185,129,0.3)'
+              }}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: 16 }}>download</span>
+              <span>安装应用</span>
+            </button>
+          )}
           <button style={{
             width: 40, height: 40, borderRadius: 12, border: 'none',
             background: 'rgba(43,157,238,0.1)', color: '#2b9dee', cursor: 'pointer',
