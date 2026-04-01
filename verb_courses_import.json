@@ -1,0 +1,50 @@
+[
+  {
+    "taskId": "en-verb-irregular-01",
+    "type": "english_word",
+    "title": "常用不规则动词(一)",
+    "subject": "英语",
+    "icon": "directions_run",
+    "iconBg": "#fce7f3",
+    "iconColor": "#ec4899",
+    "subtitle": "10 Irregular Verbs",
+    "content": {
+      "words": [
+        { "word": "Be", "phonetic": "/biː/", "meaning": "v. 是(am/is/are)", "partOfSpeech": "不规则动词", "pastTense": "was/were", "pastParticiple": "been" },
+        { "word": "Begin", "phonetic": "/bɪˈɡɪn/", "meaning": "v. 开始", "partOfSpeech": "不规则动词", "pastTense": "began", "pastParticiple": "begun" },
+        { "word": "Break", "phonetic": "/breɪk/", "meaning": "v. 打破", "partOfSpeech": "不规则动词", "pastTense": "broke", "pastParticiple": "broken" },
+        { "word": "Bring", "phonetic": "/brɪŋ/", "meaning": "v. 带来", "partOfSpeech": "不规则动词", "pastTense": "brought", "pastParticiple": "brought" },
+        { "word": "Buy", "phonetic": "/baɪ/", "meaning": "v. 买", "partOfSpeech": "不规则动词", "pastTense": "bought", "pastParticiple": "bought" },
+        { "word": "Catch", "phonetic": "/kætʃ/", "meaning": "v. 抓住", "partOfSpeech": "不规则动词", "pastTense": "caught", "pastParticiple": "caught" },
+        { "word": "Choose", "phonetic": "/tʃuːz/", "meaning": "v. 选择", "partOfSpeech": "不规则动词", "pastTense": "chose", "pastParticiple": "chosen" },
+        { "word": "Come", "phonetic": "/kʌm/", "meaning": "v. 来", "partOfSpeech": "不规则动词", "pastTense": "came", "pastParticiple": "come" },
+        { "word": "Do", "phonetic": "/duː/", "meaning": "v. 做", "partOfSpeech": "不规则动词", "pastTense": "did", "pastParticiple": "done" },
+        { "word": "Drive", "phonetic": "/draɪv/", "meaning": "v. 驾驶", "partOfSpeech": "不规则动词", "pastTense": "drove", "pastParticiple": "driven" }
+      ]
+    }
+  },
+  {
+    "taskId": "en-verb-regular-01",
+    "type": "english_word",
+    "title": "常用规则动词(一)",
+    "subject": "英语",
+    "icon": "directions_walk",
+    "iconBg": "#dbeafe",
+    "iconColor": "#3b82f6",
+    "subtitle": "10 Regular Verbs",
+    "content": {
+      "words": [
+        { "word": "Ask", "phonetic": "/æsk/", "meaning": "v. 询问，要求", "partOfSpeech": "规则动词", "pastTense": "asked", "pastParticiple": "asked" },
+        { "word": "Call", "phonetic": "/kɔːl/", "meaning": "v. 呼叫，打电话", "partOfSpeech": "规则动词", "pastTense": "called", "pastParticiple": "called" },
+        { "word": "Help", "phonetic": "/help/", "meaning": "v. 帮助", "partOfSpeech": "规则动词", "pastTense": "helped", "pastParticiple": "helped" },
+        { "word": "Look", "phonetic": "/lʊk/", "meaning": "v. 看", "partOfSpeech": "规则动词", "pastTense": "looked", "pastParticiple": "looked" },
+        { "word": "Play", "phonetic": "/pleɪ/", "meaning": "v. 玩，比赛", "partOfSpeech": "规则动词", "pastTense": "played", "pastParticiple": "played" },
+        { "word": "Use", "phonetic": "/juːz/", "meaning": "v. 使用", "partOfSpeech": "规则动词", "pastTense": "used", "pastParticiple": "used" },
+        { "word": "Want", "phonetic": "/wɑːnt/", "meaning": "v. 想要", "partOfSpeech": "规则动词", "pastTense": "wanted", "pastParticiple": "wanted" },
+        { "word": "Work", "phonetic": "/wɜːrk/", "meaning": "v. 工作", "partOfSpeech": "规则动词", "pastTense": "worked", "pastParticiple": "worked" },
+        { "word": "Live", "phonetic": "/lɪv/", "meaning": "v. 居住", "partOfSpeech": "规则动词", "pastTense": "lived", "pastParticiple": "lived" },
+        { "word": "Show", "phonetic": "/ʃoʊ/", "meaning": "v. 展示", "partOfSpeech": "规则动词", "pastTense": "showed", "pastParticiple": "showed" }
+      ]
+    }
+  }
+]

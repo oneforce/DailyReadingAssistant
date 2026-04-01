@@ -1,0 +1,129 @@
+[
+  {
+    "taskId": "template-word-001",
+    "type": "english_word",
+    "title": "英语单词模板",
+    "subject": "英语",
+    "icon": "translate",
+    "iconBg": "#dbeafe",
+    "iconColor": "#2b9dee",
+    "subtitle": "单词练习",
+    "reward": {
+      "points": 15,
+      "bonusCondition": "全部完成额外 +10"
+    },
+    "content": {
+      "words": [
+        {
+          "word": "Apple",
+          "phonetic": "/ˈæpl/",
+          "meaning": "n. 苹果",
+          "partOfSpeech": "名词词形",
+          "plural": "apples (Regular)",
+          "countable": "Countable"
+        }
+      ]
+    }
+  },
+  {
+    "taskId": "template-sentence-001",
+    "type": "english_sentence",
+    "title": "英语单句模板",
+    "subject": "英语",
+    "icon": "record_voice_over",
+    "iconBg": "#d1fae5",
+    "iconColor": "#10b981",
+    "subtitle": "单句练习",
+    "reward": {
+      "points": 12,
+      "bonusCondition": "全部90分以上 +8"
+    },
+    "content": {
+      "sentences": [
+        {
+          "text": "How are you today?",
+          "phonetic": "[haʊ ɑːr juː təˈdeɪ]",
+          "translation": "你今天好吗？"
+        }
+      ]
+    }
+  },
+  {
+    "taskId": "template-article-001",
+    "type": "english_article",
+    "title": "英语长文模板",
+    "subject": "英语",
+    "icon": "menu_book",
+    "iconBg": "#e0e7ff",
+    "iconColor": "#6366f1",
+    "subtitle": "长文朗读",
+    "reward": {
+      "points": 20,
+      "bonusCondition": "全部完成额外 +15"
+    },
+    "content": {
+      "title": "文章标题",
+      "text": "文章的具体内容段落...\n第二段内容..."
+    }
+  },
+  {
+    "taskId": "template-poem-001",
+    "type": "chinese_poem",
+    "title": "古诗模板",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "reward": {
+      "points": 10,
+      "bonusCondition": "全部完成额外 +5"
+    },
+    "content": {
+      "text": "床前明月光，疑是地上霜。\n举头望明月，低头思故乡。",
+      "author": "李白",
+      "dynasty": "唐代",
+      "authorIntro": "作者简介...",
+      "translation": "诗词翻译..."
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "template-text-001",
+    "type": "chinese_text",
+    "title": "课文朗读模板",
+    "subject": "语文",
+    "icon": "auto_stories",
+    "iconBg": "#fef3c7",
+    "iconColor": "#f59e0b",
+    "subtitle": "课文朗读",
+    "reward": {
+      "points": 25,
+      "bonusCondition": "3遍全读完 +20"
+    },
+    "content": {
+      "title": "文章标题",
+      "type": "节选",
+      "author": "作者",
+      "pages": [
+        "第一页内容...",
+        "第二页内容..."
+      ],
+      "totalReadCount": 3
+    }
+  }
+]
