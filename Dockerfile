@@ -8,7 +8,7 @@ COPY package.json package-lock.json ./
 
 # 由于项目在国内，替换 npm 源为淘宝源来加速下载，并安装依赖包
 RUN npm config set registry https://registry.npmmirror.com && \
-    npm install
+    npm install --legacy-peer-deps
 
 # 拷贝项目中剩余的源代码
 COPY . .
