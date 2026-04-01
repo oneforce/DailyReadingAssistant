@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import useTaskStore from '../stores/taskStore'
 import useRecordStore from '../stores/recordStore'
+import useEventStore from '../stores/eventStore'
 import { AudioRecorder, formatTime } from '../utils/recorder'
 import { speakEN } from '../utils/speech'
 import BackButton from '../components/BackButton'
@@ -38,7 +39,14 @@ export default function EnWordPage() {
       const blob = await recorderRef.current.stop()
       setIsRecording(false)
       if (blob) {
-        await addRecording(taskId, `word-${currentIndex}`, blob)
+        // EnWordPage doesn't have a distinct start time capture currently, estimating
+        const finalTime = 0 // duration is not explicitly tracked here, passing 0
+        const trackRecording = useEventStore.getState().trackRecording
+        const recordStartTime = new Date()
+        const url = await addRecording(taskId, `word-${currentIndex}`, blob)
+        
+        trackRecording(taskId, 'EnWordPage', recordStartTime, finalTime, url || '')
+        
         setRecorded({ ...recorded, [currentIndex]: true })
       }
     } else {

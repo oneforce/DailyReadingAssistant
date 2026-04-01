@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import useTaskStore from '../stores/taskStore'
 import useRecordStore from '../stores/recordStore'
+import useEventStore from '../stores/eventStore'
 import { AudioRecorder, formatTime } from '../utils/recorder'
 import BackButton from '../components/BackButton'
 const ROUND_COUNT = 3
@@ -129,10 +130,15 @@ export default function TextbookReadPage() {
     if (activeRound === roundIndex) {
       // Stop recording
       const finalTime = recordTime
+      const recordStartTime = new Date(Date.now() - finalTime * 1000)
       const blob = await recorderRef.current.stop()
       setActiveRound(-1)
       if (blob) {
         const url = await addRecording(taskId, `textbook-${roundIndex + 1}`, blob, finalTime)
+        
+        const trackRecording = useEventStore.getState().trackRecording
+        trackRecording(taskId, 'TextbookReadPage', recordStartTime, finalTime, url || '')
+        
         setRecordings(prev => {
           const next = [...prev]
           next[roundIndex] = { url, duration: finalTime }

@@ -82,7 +82,7 @@ export default function RewardRulesModal({ onClose }) {
           background: 'linear-gradient(135deg, rgba(43,157,238,0.1), rgba(43,157,238,0.02))'
         }}>
           <h2 style={{ fontSize: 20, fontWeight: 800, margin: 0, color: '#1e293b', display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span className="material-icons" style={{ color: '#2b9dee' }}>emoji_events</span>
+            <span className="material-symbols-outlined" style={{ color: '#2b9dee' }}>emoji_events</span>
             奖励规则
           </h2>
           <button onClick={onClose} style={{ 

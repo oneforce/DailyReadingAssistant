@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useUserStore from '../stores/userStore'
 import useTaskStore from '../stores/taskStore'
+import useEventStore from '../stores/eventStore'
 
 const taskRouteMap = {
   chinese_poem: '/task/poem/',
@@ -9,6 +10,15 @@ const taskRouteMap = {
   english_word: '/task/word/',
   english_sentence: '/task/sentence/',
   english_article: '/task/article/',
+}
+
+const TASK_TYPE_LABELS = {
+  all: '全部',
+  chinese_poem: '古诗',
+  chinese_text: '语文课文',
+  english_word: '英语单词',
+  english_sentence: '英语句型',
+  english_article: '英语文章',
 }
 
 
@@ -31,13 +41,17 @@ export default function HomePage() {
   const totalCount = getTotalCount()
   
   const navigate = useNavigate()
+  const trackClick = useEventStore((s) => s.trackClick)
 
   const [activeTab, setActiveTab] = useState('pending'); // 'pending', 'returned', 'completed'
+  const [typeFilter, setTypeFilter] = useState('all');
   const [displayCount, setDisplayCount] = useState(5);
 
-  const pendingTasks = tasks.filter((t) => !t.completed && (!t.returnHistory || t.returnHistory.length === 0));
-  const returnedTasks = tasks.filter((t) => !t.completed && t.returnHistory && t.returnHistory.length > 0);
-  const completedTasks = tasks.filter((t) => t.completed).sort((a, b) => {
+  const filteredTasks = tasks.filter((t) => typeFilter === 'all' || t.type === typeFilter);
+
+  const pendingTasks = filteredTasks.filter((t) => !t.completed && (!t.returnHistory || t.returnHistory.length === 0));
+  const returnedTasks = filteredTasks.filter((t) => !t.completed && t.returnHistory && t.returnHistory.length > 0);
+  const completedTasks = filteredTasks.filter((t) => t.completed).sort((a, b) => {
     // Sort by completion time descending (newest first)
     if (!a.completedAt) return 1;
     if (!b.completedAt) return -1;
@@ -63,10 +77,14 @@ export default function HomePage() {
   const handleTabChange = (tab) => {
     setActiveTab(tab)
     setDisplayCount(5) // Reset count on tab switch
+    trackClick('HomePage', `Tab_${tab}`, 'tab_switch')
   }
 
   const renderTask = (task, isCompleted) => (
-    <div key={task.taskId} onClick={() => navigate(`${taskRouteMap[task.type]}${task.taskId}`)}
+    <div key={task.taskId} onClick={() => {
+      trackClick('HomePage', task.title, isCompleted ? 'review_task' : 'start_task')
+      navigate(`${taskRouteMap[task.type]}${task.taskId}`)
+    }}
       style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: isCompleted ? 12 : 16, 
@@ -166,11 +184,33 @@ export default function HomePage() {
         <div style={{ flex: 1 }}>
           <p style={{ color: '#2b9dee', fontSize: 12, fontWeight: 700, letterSpacing: 2 }}>欢迎回来！</p>
           <p style={{ fontSize: 24, fontWeight: 800, lineHeight: 1.2 }}>你好，{user.name}！</p>
-          <p style={{ color: '#94a3b8', fontSize: 13, marginTop: 2 }}>
-            今日 {completedCount}/{totalCount} 项任务
-          </p>
+          {completedCount > 0 && (
+            <p style={{ color: '#94a3b8', fontSize: 13, marginTop: 4 }}>
+              今日已完成 <span style={{ color: '#10b981', fontWeight: 800 }}>{completedCount}</span> 项任务
+            </p>
+          )}
         </div>
       </section>
+
+      {/* Type Filter */}
+      <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '12px', marginBottom: '16px', msOverflowStyle: 'none', scrollbarWidth: 'none' }}>
+        <style dangerouslySetInnerHTML={{__html: `div::-webkit-scrollbar { display: none; }`}} />
+        {['all', ...Array.from(new Set(tasks.map(t => t.type)))].map(t => (
+          <button key={t} onClick={() => {
+             trackClick('home', `filter_${t}`, 'switch_filter')
+             setTypeFilter(t)
+          }} style={{
+            padding: '6px 14px', borderRadius: '20px', whiteSpace: 'nowrap',
+            background: typeFilter === t ? '#1e293b' : '#f1f5f9',
+            color: typeFilter === t ? '#fff' : '#64748b',
+            border: 'none', fontWeight: 700, fontSize: 13, cursor: 'pointer',
+            transition: 'all 0.2s',
+          }}>
+            {TASK_TYPE_LABELS[t] || t}
+          </button>
+        ))}
+      </div>
+
       {/* Tabs */}
       <div style={{ display: 'flex', gap: 24, marginBottom: 16, borderBottom: '1px solid #e2e8f0' }}>
         <button 
@@ -314,7 +354,7 @@ export default function HomePage() {
 
       {hasMore && (
         <button 
-          onClick={() => setDisplayCount(prev => prev + 5)}
+          onClick={() => { trackClick('HomePage', '加载更多', 'load_more'); setDisplayCount(prev => prev + 5) }}
           style={{
             width: '100%', padding: '14px', background: 'rgba(43,157,238,0.05)', color: '#2b9dee',
             borderRadius: 16, border: '1px dashed rgba(43,157,238,0.3)', fontWeight: 700, fontSize: 14,

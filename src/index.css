@@ -78,3 +78,42 @@ body {
 .wave-bar:nth-child(6) { animation-delay: 0.5s; }
 .wave-bar:nth-child(7) { animation-delay: 0.6s; }
 .wave-bar:nth-child(8) { animation-delay: 0.7s; }
+
+/* ========== Reward Effect Animations ========== */
+@keyframes particle-fly {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--fly-x), var(--fly-y)) scale(0.2); }
+}
+
+@keyframes reward-float-up {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  20% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+  40% { transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -80%) scale(0.8); }
+}
+
+@keyframes reward-glow-pulse {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes reward-ring-expand {
+  0% { width: 0; height: 0; opacity: 1; border-width: 3px; }
+  100% { width: 400px; height: 400px; opacity: 0; border-width: 1px; }
+}
+
+@keyframes reward-big-pop {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+  15% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+  30% { transform: translate(-50%, -50%) scale(0.95); }
+  45% { transform: translate(-50%, -50%) scale(1.05); }
+  60% { transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -60%) scale(0.9); }
+}
+
+@keyframes reward-emoji-spin {
+  0% { transform: rotate(-20deg) scale(0.5); }
+  50% { transform: rotate(10deg) scale(1.2); }
+  100% { transform: rotate(0deg) scale(1); }
+}

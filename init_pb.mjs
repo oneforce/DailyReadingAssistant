@@ -85,6 +85,29 @@ async function run() {
     });
     console.log('✅ recordings 表重新创建成功！(包含 4 个字段)');
 
+    // --- events collection ---
+    try { await pb.collections.delete('events'); console.log('  - 删除旧 events 表'); } catch (e) { }
+
+    await pb.collections.create({
+      name: 'events',
+      type: 'base',
+      listRule: '', viewRule: '', createRule: '', updateRule: '', deleteRule: '',
+      fields: [
+        { name: 'eventType', type: 'text', required: true },
+        { name: 'page', type: 'text' },
+        { name: 'target', type: 'text' },
+        { name: 'action', type: 'text' },
+        { name: 'taskId', type: 'text' },
+        { name: 'recordingUrl', type: 'text' },
+        { name: 'startTime', type: 'date' },
+        { name: 'duration', type: 'number' },
+        { name: 'isSpecial', type: 'bool' },
+        { name: 'specialReason', type: 'text' },
+        { name: 'pointsAwarded', type: 'number' }
+      ]
+    });
+    console.log('✅ events 表创建成功！(包含 11 个字段)');
+
     console.log('\n🎉 所有自动化建表流程结束，字段已完美生成！');
 
   } catch (err) {

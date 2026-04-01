@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import useTaskStore from '../stores/taskStore'
 import useRecordStore from '../stores/recordStore'
+import useEventStore from '../stores/eventStore'
 import { AudioRecorder, formatTime } from '../utils/recorder'
 import BackButton from '../components/BackButton'
 export default function EnArticlePage() {
@@ -56,10 +57,15 @@ export default function EnArticlePage() {
   const handleRecord = async () => {
     if (isRecording) {
       const finalTime = recordTime
+      const recordStartTime = new Date(Date.now() - finalTime * 1000)
       const blob = await recorderRef.current.stop()
       setIsRecording(false)
       if (blob) {
         const url = await addRecording(taskId, 'article', blob, finalTime)
+        
+        const trackRecording = useEventStore.getState().trackRecording
+        trackRecording(taskId, 'EnArticlePage', recordStartTime, finalTime, url || '')
+        
         setAudioUrl(url)
         setSavedDuration(finalTime)
         setPlayProgress(0)

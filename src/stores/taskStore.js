@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import pb from '../utils/pb'
+import useEventStore from './eventStore'
 
 const useTaskStore = create(
   persist(
@@ -105,6 +106,13 @@ const useTaskStore = create(
           history: hList,
           streak: newStreak
         })
+
+        // Track special event: Task Completion
+        try {
+          useEventStore.getState().trackTaskCompletion(id, '任务处理')
+        } catch (e) {
+          console.warn('Silent failure tracking task completion event', e)
+        }
 
         // Remote Sync to pocketbase
         try {

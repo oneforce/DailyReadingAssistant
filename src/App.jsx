@@ -14,6 +14,7 @@ import SettingsPage from './pages/SettingsPage'
 import CalendarHistoryPage from './pages/CalendarHistoryPage'
 import useRecordStore from './stores/recordStore'
 import useTaskStore from './stores/taskStore'
+import RewardEffect from './components/RewardEffect'
 
 export default function App() {
   const loadFromDB = useRecordStore((s) => s.loadFromDB)
@@ -40,6 +41,8 @@ export default function App() {
   }
 
   return (
+    <>
+    <RewardEffect />
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
@@ -57,6 +60,7 @@ export default function App() {
         <Route path="/history" element={<CalendarHistoryPage />} />
       </Routes>
     </BrowserRouter>
+    </>
   )
 }
 

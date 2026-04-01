@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import useTaskStore from '../stores/taskStore'
 import useRecordStore from '../stores/recordStore'
+import useEventStore from '../stores/eventStore'
 import { AudioRecorder, formatTime } from '../utils/recorder'
 import { speakEN } from '../utils/speech'
 import BackButton from '../components/BackButton'
@@ -37,10 +38,15 @@ export default function EnSentencePage() {
   const handleRecord = async (i) => {
     if (recordingIndex === i) {
       const finalTime = recordTime
+      const recordStartTime = new Date(Date.now() - finalTime * 1000)
       const blob = await recorderRef.current.stop()
       setRecordingIndex(-1)
       if (blob) {
-        await addRecording(taskId, `s-${i}`, blob, finalTime)
+        const url = await addRecording(taskId, `s-${i}`, blob, finalTime)
+        
+        const trackRecording = useEventStore.getState().trackRecording
+        trackRecording(taskId, 'EnSentencePage', recordStartTime, finalTime, url || '')
+        
         const ns = [...states]
         ns[i] = { recorded: true, duration: finalTime }
         setStates(ns)

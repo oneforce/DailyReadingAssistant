@@ -191,13 +191,13 @@ export default function ParentDashboard() {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <button onClick={() => navigate('/history')} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px', background: 'rgba(245,158,11,0.1)', color: '#d97706', borderRadius: 12, border: 'none', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>
-            <span className="material-icons" style={{ fontSize: 16 }}>calendar_month</span> 荣誉日历
+            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>calendar_month</span> 荣誉日历
           </button>
           <button onClick={() => navigate('/courses')} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px', background: 'rgba(99,102,241,0.1)', color: '#6366f1', borderRadius: 12, border: 'none', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>
-            <span className="material-icons" style={{ fontSize: 16 }}>library_books</span> 课程管理
+            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>library_books</span> 课程管理
           </button>
           <button onClick={() => navigate('/settings')} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px', background: 'rgba(241,245,249,0.8)', color: '#475569', borderRadius: 12, border: 'none', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>
-            <span className="material-icons" style={{ fontSize: 16 }}>settings</span> 系统设置
+            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>settings</span> 系统设置
           </button>
           <BackButton />
         </div>

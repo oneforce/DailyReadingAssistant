@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import useTaskStore from '../stores/taskStore'
 import useRecordStore from '../stores/recordStore'
+import useEventStore from '../stores/eventStore'
 import { AudioRecorder, formatTime } from '../utils/recorder'
 import BackButton from '../components/BackButton'
 const ROUND_COUNT = 3
@@ -119,6 +120,7 @@ export default function PoemReadPage() {
 
     if (activeRound === roundIndex) {
       const finalTime = recordTime
+      const recordStartTime = new Date(Date.now() - finalTime * 1000)
       const blob = await recorderRef.current.stop()
       setActiveRound(-1)
       if (blob) {
@@ -128,6 +130,9 @@ export default function PoemReadPage() {
           next[roundIndex] = { url, duration: finalTime }
           return next
         })
+        // Track recording event
+        const trackRecording = useEventStore.getState().trackRecording
+        trackRecording(taskId, 'PoemReadPage', recordStartTime, finalTime, url || '')
       }
     } else {
       if (activeRound >= 0) {

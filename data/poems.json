@@ -1,0 +1,2402 @@
+[
+  {
+    "taskId": "poem-001",
+    "type": "chinese_poem",
+    "title": "咏鹅",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "鹅，鹅，鹅，曲项向天歌。\n白毛浮绿水，红掌拨清波。",
+      "author": "骆宾王",
+      "dynasty": "唐代",
+      "authorIntro": "骆宾王（约619—约687），唐代诗人，与王勃、杨炯、卢照邻合称“初唐四杰”。",
+      "translation": "鹅，鹅，鹅，弯着脖子面向蓝天唱歌。洁白的羽毛漂浮在绿水上，红红的脚掌拨动着清清的水波。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-002",
+    "type": "chinese_poem",
+    "title": "春晓",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "春眠不觉晓，处处闻啼鸟。\n夜来风雨声，花落知多少。",
+      "author": "孟浩然",
+      "dynasty": "唐代",
+      "authorIntro": "孟浩然（689—740），唐代著名的山水田园派诗人。",
+      "translation": "春天的早晨睡得很香，不知不觉天已经亮了，到处都能听到鸟儿的啼叫声。想起昨夜那阵阵的风雨声，不知被吹落了多少花朵。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-003",
+    "type": "chinese_poem",
+    "title": "静夜思",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "床前明月光，疑是地上霜。\n举头望明月，低头思故乡。",
+      "author": "李白",
+      "dynasty": "唐代",
+      "authorIntro": "李白（701—762），被后人誉为“诗仙”。",
+      "translation": "明亮的月光洒在床前，好像地上泛起了一层白霜。抬头仰望天上的明月，低头沉思，想起了远方的家乡。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-004",
+    "type": "chinese_poem",
+    "title": "风",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "解落三秋叶，能开二月花。\n过江千尺浪，入竹万竿斜。",
+      "author": "李峤",
+      "dynasty": "唐代",
+      "authorIntro": "李峤（644—713），唐代诗人。",
+      "translation": "风能使晚秋的树叶脱落，能催开早春二月的鲜花。刮过江面时能卷起千尺巨浪，吹进竹林时能使万竿竹子倾斜。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-005",
+    "type": "chinese_poem",
+    "title": "江南",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "江南可采莲，莲叶何田田。鱼戏莲叶间。鱼戏莲叶东，鱼戏莲叶西，鱼戏莲叶南，鱼戏莲叶北。",
+      "author": "两汉乐府",
+      "dynasty": "汉代",
+      "authorIntro": "汉代乐府民歌。",
+      "translation": "江南水乡正是采莲的好季节，莲叶茂盛。鱼儿在莲叶间嬉戏，穿梭于东西南北。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-006",
+    "type": "chinese_poem",
+    "title": "咏柳",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "碧玉妆成一树高，万条垂下绿丝绦。\n不知细叶谁裁出，二月春风似剪刀。",
+      "author": "贺知章",
+      "dynasty": "唐代",
+      "authorIntro": "贺知章（约659—约744），唐代诗人、书法家。",
+      "translation": "高高的柳树像碧玉装饰成，千万柳枝像绿丝带。细叶是二月春风这把剪刀裁出的。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-007",
+    "type": "chinese_poem",
+    "title": "长歌行",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "青青园中葵，朝露待日晞。\n阳春布德泽，万物生光辉。\n常恐秋节至，焜黄华叶衰。\n百川东到海，何时复西归。\n少壮不努力，老大徒伤悲。",
+      "author": "两汉乐府",
+      "dynasty": "汉代",
+      "authorIntro": "汉乐府民歌，告诫人们珍惜光阴。",
+      "translation": "园中葵菜郁郁葱葱，朝露待日晞。春天布德泽，万物生光辉。常恐秋至叶衰。百川入海不复回，少壮不努力，老大徒伤悲。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-008",
+    "type": "chinese_poem",
+    "title": "登鹳雀楼",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "白日依山尽，黄河入海流。\n欲穷千里目，更上一层楼。",
+      "author": "王之涣",
+      "dynasty": "唐代",
+      "authorIntro": "王之涣（688—742），盛唐边塞诗人。",
+      "translation": "太阳依山落下，黄河入海流去。想看千里远，再上一层楼。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-009",
+    "type": "chinese_poem",
+    "title": "凉州词",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "葡萄美酒夜光杯，欲饮琵琶马上催。\n醉卧沙场君莫笑，古来征战几人回？",
+      "author": "王翰",
+      "dynasty": "唐代",
+      "authorIntro": "王翰（687—726），唐代边塞诗人。",
+      "translation": "葡萄美酒盛入夜光杯，欲饮时琵琶声催。醉卧沙场莫笑，自古征战几人能回？"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-010",
+    "type": "chinese_poem",
+    "title": "出塞",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "秦时明月汉时关，万里长征人未还。\n但使龙城飞将在，不教胡马度阴山。",
+      "author": "王昌龄",
+      "dynasty": "唐代",
+      "authorIntro": "王昌龄（约698—约756），“七绝圣手”。",
+      "translation": "秦汉明月边关，长征士兵未还。只要龙城飞将在，不许敌马度阴山。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-011",
+    "type": "chinese_poem",
+    "title": "芙蓉楼送辛渐",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "寒雨连江夜入吴，平明送客楚山孤。\n洛阳亲友如相问，一片冰心在玉壶。",
+      "author": "王昌龄",
+      "dynasty": "唐代",
+      "authorIntro": "王昌龄，唐代著名诗人。",
+      "translation": "冷雨连江入吴地，清晨送友楚山孤。洛阳亲友若问起，我的心像玉壶冰一样清廉。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-012",
+    "type": "chinese_poem",
+    "title": "敕勒歌",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "敕勒川，阴山下。\n天似穹庐，笼盖四野。\n天苍苍，野茫茫，风吹草低见牛羊。",
+      "author": "北朝民歌",
+      "dynasty": "北朝",
+      "authorIntro": "北朝民歌，赞美草原风光。",
+      "translation": "敕勒大草原就在阴山脚下。天空像大帐篷笼盖原野。天蓝野茫，风吹草低现出牛羊。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-013",
+    "type": "chinese_poem",
+    "title": "回乡偶书",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "少小离家老大回，乡音无改鬓毛衰。\n儿童相见不相识，笑问客从何处来。",
+      "author": "贺知章",
+      "dynasty": "唐代",
+      "authorIntro": "贺知章，唐代诗人。",
+      "translation": "少年离家老了才回，乡音没变鬓发已白。孩子们见了不认识，笑着问客从哪来。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-014",
+    "type": "chinese_poem",
+    "title": "凉州词",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "黄河远上白云间，一片孤城万仞山。\n羌笛何须怨杨柳，春风不度玉门关。",
+      "author": "王之涣",
+      "dynasty": "唐代",
+      "authorIntro": "王之涣，盛唐边塞诗人。",
+      "translation": "黄河奔向白云间，孤城矗立万仞山。羌笛何必怨杨柳，春风吹不到玉门关。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-015",
+    "type": "chinese_poem",
+    "title": "鹿柴",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "空山不见人，但闻人语响。\n返景入深林，复照青苔上。",
+      "author": "王维",
+      "dynasty": "唐代",
+      "authorIntro": "王维（701—761），“诗佛”。",
+      "translation": "寂静山中不见人，只听说话声。落日余晖入深林，照在青苔上。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-016",
+    "type": "chinese_poem",
+    "title": "悯农(其一)",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "春种一粒粟，秋收万颗子。\n四海无闲田，农夫犹饿死。",
+      "author": "李绅",
+      "dynasty": "唐代",
+      "authorIntro": "李绅（772—846），唐代诗人。",
+      "translation": "春天种下一粒粟，秋天收获万颗籽。天下没荒田，农夫还饿死。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-017",
+    "type": "chinese_poem",
+    "title": "悯农(其二)",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "锄禾日当午，汗滴禾下土。\n谁知盘中餐，粒粒皆辛苦。",
+      "author": "李绅",
+      "dynasty": "唐代",
+      "authorIntro": "李绅，唐代诗人。",
+      "translation": "中午锄禾汗滴土，谁知碗中餐，粒粒皆辛苦。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-018",
+    "type": "chinese_poem",
+    "title": "送元二使安西",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "渭城朝雨浥轻尘，客舍青青柳色新。\n劝君更尽一杯酒，西出阳关无故人。",
+      "author": "王维",
+      "dynasty": "唐代",
+      "authorIntro": "王维，唐代山水田园诗人。",
+      "translation": "渭城早雨湿轻尘，旅店柳色新。请再喝一杯酒，出阳关就没老友了。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-019",
+    "type": "chinese_poem",
+    "title": "九月九日忆山东兄弟",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "独在异乡为异客，每逢佳节倍思亲。\n遥知兄弟登高处，遍插茱萸少一人。",
+      "author": "王维",
+      "dynasty": "唐代",
+      "authorIntro": "王维，唐代诗人。",
+      "translation": "独自客居异乡，佳节更思亲。远想兄弟登高处，插茱萸时少了我。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-020",
+    "type": "chinese_poem",
+    "title": "古朗月行(节选)",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "小时不识月，呼作白玉盘。\n又疑瑶台镜，飞在青云端。",
+      "author": "李白",
+      "dynasty": "唐代",
+      "authorIntro": "李白，唐代诗人。",
+      "translation": "小时候不认识月亮，叫它白玉盘。又怀疑是瑶台仙镜，飞在青云里。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-021",
+    "type": "chinese_poem",
+    "title": "望庐山瀑布",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "日照香炉生紫烟，遥看瀑布挂前川。\n飞流直下三千尺，疑是银河落九天。",
+      "author": "李白",
+      "dynasty": "唐代",
+      "authorIntro": "李白，唐代诗人。",
+      "translation": "香炉峰在阳光下生紫烟，瀑布像挂在山前。飞流直下三千尺，像银河落九天。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-022",
+    "type": "chinese_poem",
+    "title": "赠汪伦",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "李白乘舟将欲行，忽闻岸上踏歌声。\n桃花潭水深千尺，不及汪伦送我情。",
+      "author": "李白",
+      "dynasty": "唐代",
+      "authorIntro": "李白，唐代诗人。",
+      "translation": "我要坐船走，忽听岸上踏歌声。桃花潭水虽千尺深，也不及汪伦送我的情谊。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-023",
+    "type": "chinese_poem",
+    "title": "春夜喜雨",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "好雨知时节，当春乃发生。\n随风潜入夜，润物细无声。\n野径云俱黑，江船火独明。\n晓看红湿处，花重锦官城。",
+      "author": "杜甫",
+      "dynasty": "唐代",
+      "authorIntro": "杜甫（712—770），“诗圣”。",
+      "translation": "好雨知道时节，春天降临。随风潜入夜，无声润万物。夜路云黑，船火明。清晨看红花，锦官城花繁。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-024",
+    "type": "chinese_poem",
+    "title": "绝句",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "迟日江山丽，春风花草香。\n泥融飞燕子，沙暖睡鸳鸯。",
+      "author": "杜甫",
+      "dynasty": "唐代",
+      "authorIntro": "杜甫，唐代诗人。",
+      "translation": "春日阳光灿烂江山丽，春风送来花草香。泥软燕子飞，沙暖鸳鸯睡。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-025",
+    "type": "chinese_poem",
+    "title": "黄鹤楼送孟浩然之广陵",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "故人西辞黄鹤楼，烟花三月下扬州。\n孤帆远影碧空尽，唯见长江天际流。",
+      "author": "李白",
+      "dynasty": "唐代",
+      "authorIntro": "李白，唐代诗人。",
+      "translation": "老友辞别黄鹤楼，三月去扬州。孤帆渐远消失，只剩长江流。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-026",
+    "type": "chinese_poem",
+    "title": "早发白帝城",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "朝辞白帝彩云间，千里江陵一日还。\n两岸猿声啼不住，轻舟已过万重山。",
+      "author": "李白",
+      "dynasty": "唐代",
+      "authorIntro": "李白，唐代诗人。",
+      "translation": "早别彩云间的白帝城，千里江陵一天回。两岸猿声不住，轻舟已过万重山。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-027",
+    "type": "chinese_poem",
+    "title": "望天门山",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "天门中断楚江开，碧水东流至此回。\n两岸青山相对出，孤帆一片日边来。",
+      "author": "李白",
+      "dynasty": "唐代",
+      "authorIntro": "李白，唐代诗人。",
+      "translation": "天门山被长江冲开，碧水东流回旋。两岸青山对立，孤帆从日边来。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-028",
+    "type": "chinese_poem",
+    "title": "别董大",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "千里黄云白日曛，北风吹雁雪纷纷。\n莫愁前路无知己，天下谁人不识君？",
+      "author": "高适",
+      "dynasty": "唐代",
+      "authorIntro": "高适（约704—765），唐代边塞诗人。",
+      "translation": "黄云遮日北风吹，雪落雁飞。莫愁前路没知己，天下谁不认识你？"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-029",
+    "type": "chinese_poem",
+    "title": "绝句",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "两个黄鹂鸣翠柳，一行白鹭上青天。\n窗含西岭千秋雪，门泊东吴万里船。",
+      "author": "杜甫",
+      "dynasty": "唐代",
+      "authorIntro": "杜甫，唐代诗人。",
+      "translation": "黄鹂鸣翠柳，白鹭上青天。窗映西岭千秋雪，门停东吴万里船。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-030",
+    "type": "chinese_poem",
+    "title": "江畔独步寻花",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "黄师塔前江水东，春光懒困倚微风。\n桃花一簇开无主，可爱深红爱浅红？",
+      "author": "杜甫",
+      "dynasty": "唐代",
+      "authorIntro": "杜甫，唐代诗人。",
+      "translation": "江水东流，春光懒困。桃花无主自开，深红浅红都可爱。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-031",
+    "type": "chinese_poem",
+    "title": "江雪",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "千山鸟飞绝，万径人踪灭。\n孤舟蓑笠翁，独钓寒江雪。",
+      "author": "柳宗元",
+      "dynasty": "唐代",
+      "authorIntro": "柳宗元（773—819），“唐宋八大家”之一。",
+      "translation": "千山没鸟飞，万路没人踪。孤舟老翁，独钓寒江雪。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-032",
+    "type": "chinese_poem",
+    "title": "游子吟",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "慈母手中线，游子身上衣。\n临行密密缝，意恐迟迟归。\n谁言寸草心，报得三春晖。",
+      "author": "孟郊",
+      "dynasty": "唐代",
+      "authorIntro": "孟郊（751—814），唐代诗人。",
+      "translation": "慈母缝衣，担心孩子迟归。谁说小草的心能报答春天的阳光？"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-033",
+    "type": "chinese_poem",
+    "title": "山行",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "远上寒山石径斜，白云深处有人家。\n停车坐爱枫林晚，霜叶红于二月花。",
+      "author": "杜牧",
+      "dynasty": "唐代",
+      "authorIntro": "杜牧（803—852），“小李杜”之一。",
+      "translation": "深秋走上石径山，白云深处有家。停车因爱枫林晚，红叶胜过二月花。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-034",
+    "type": "chinese_poem",
+    "title": "清明",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "清明时节雨纷纷，路上行人欲断魂。\n借问酒家何处有，牧童遥指杏花村。",
+      "author": "杜牧",
+      "dynasty": "唐代",
+      "authorIntro": "杜牧，唐代诗人。",
+      "translation": "清明细雨，行人忧愁。问酒家在哪？牧童指杏花村。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-035",
+    "type": "chinese_poem",
+    "title": "早春呈水部张十八员外",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "天街小雨润如酥，草色遥看近却无。\n最是一年春好处，绝胜烟柳满皇都。",
+      "author": "韩愈",
+      "dynasty": "唐代",
+      "authorIntro": "韩愈（768—824），“唐宋八大家”之首。",
+      "translation": "京城小雨润如酥，草色远看有近看无。这是春天最好的时候，胜过烟柳满城。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-036",
+    "type": "chinese_poem",
+    "title": "渔歌子",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "西塞山前白鹭飞，桃花流水鳜鱼肥。\n青箬笠，绿蓑衣，斜风细雨不须归。",
+      "author": "张志和",
+      "dynasty": "唐代",
+      "authorIntro": "张志和（约732—约774），唐代词人。",
+      "translation": "白鹭飞，桃花流水鳜鱼肥。老翁戴笠披蓑，在斜风细雨中不愿回。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-037",
+    "type": "chinese_poem",
+    "title": "望洞庭",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "湖光秋月两相和，潭面无风镜未磨。\n遥望洞庭山水色，白银盘里一青螺。",
+      "author": "刘禹锡",
+      "dynasty": "唐代",
+      "authorIntro": "刘禹锡（772—842），“诗豪”。",
+      "translation": "秋月湖光和谐，水面无风像镜子。洞庭山水像银盘里的青螺。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-038",
+    "type": "chinese_poem",
+    "title": "浪淘沙",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "九曲黄河万里沙，浪淘风簸自天涯。\n如今直上银河去，同到牵牛织女家。",
+      "author": "刘禹锡",
+      "dynasty": "唐代",
+      "authorIntro": "刘禹锡，唐代诗人。",
+      "translation": "黄河万里沙，随风浪到天涯。现在直上银河，去牛郎织女家。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-039",
+    "type": "chinese_poem",
+    "title": "枫桥夜泊",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "月落乌啼霜满天，江枫渔火对愁眠。\n姑苏城外寒山寺，夜半钟声到客船。",
+      "author": "张继",
+      "dynasty": "唐代",
+      "authorIntro": "张继，唐代诗人。",
+      "translation": "月落乌啼霜满天，对愁而眠。寒山寺钟声，半夜传到船上。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-040",
+    "type": "chinese_poem",
+    "title": "滁州西涧",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "独怜幽草涧边生，上有黄鹂深树鸣。\n春潮带雨晚来急，野渡无人舟自横。",
+      "author": "韦应物",
+      "dynasty": "唐代",
+      "authorIntro": "韦应物（737—792），唐代诗人。",
+      "translation": "爱涧边草，听深树黄鹂。春潮带雨急，野渡无人船自横。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-041",
+    "type": "chinese_poem",
+    "title": "塞下曲",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "月黑雁飞高，单于夜遁逃。\n欲将轻骑逐，大雪满弓刀。",
+      "author": "卢纶",
+      "dynasty": "唐代",
+      "authorIntro": "卢纶（约737—约799），“大历十才子”之一。",
+      "translation": "月黑雁高飞，敌军夜逃。正要追击，大雪盖满弓刀。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-042",
+    "type": "chinese_poem",
+    "title": "赋得古原草送别",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "离离原上草，一岁一枯荣。\n野火烧不尽，春风吹又生。\n远芳侵古道，晴翠接荒城。\n又送王孙去，萋萋满别情。",
+      "author": "白居易",
+      "dynasty": "唐代",
+      "authorIntro": "白居易（772—846），“诗魔”。",
+      "translation": "草原草茂盛，岁岁枯荣。野火烧不尽，春风吹又生。芳草连古道，又送友人去。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-043",
+    "type": "chinese_poem",
+    "title": "池上",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "小娃撑小艇，偷采白莲回。\n不解藏踪迹，浮萍一道开。",
+      "author": "白居易",
+      "dynasty": "唐代",
+      "authorIntro": "白居易，唐代诗人。",
+      "translation": "小孩撑小船偷采白莲，不知掩藏，浮萍留下痕迹。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-044",
+    "type": "chinese_poem",
+    "title": "忆江南",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "江南好，风景旧曾谙。日出江花红胜火，春来江水绿如蓝，能不忆江南？",
+      "author": "白居易",
+      "dynasty": "唐代",
+      "authorIntro": "白居易，唐代诗人。",
+      "translation": "江南风景好，日出花红水绿。怎能不怀念？"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-045",
+    "type": "chinese_poem",
+    "title": "小儿垂钓",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "蓬头稚子学垂纶，侧坐莓苔草映身。\n路人借问遥招手，怕得鱼惊不应人。",
+      "author": "胡令能",
+      "dynasty": "唐代",
+      "authorIntro": "胡令能（785—826），唐代诗人。",
+      "translation": "小孩学钓鱼，怕惊鱼，摆手不应路人。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-046",
+    "type": "chinese_poem",
+    "title": "寻隐者不遇",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "松下问童子，言师采药去。\n只在此山中，云深不知处。",
+      "author": "贾岛",
+      "dynasty": "唐代",
+      "authorIntro": "贾岛（779—843），“苦吟诗人”。",
+      "translation": "松下问童子，师父采药去。就在山中，云深不知在哪。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-047",
+    "type": "chinese_poem",
+    "title": "江南春",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "千里莺啼绿映红，水村山郭酒旗风。\n南朝四百八十寺，多少楼台烟雨中。",
+      "author": "杜牧",
+      "dynasty": "唐代",
+      "authorIntro": "杜牧，唐代诗人。",
+      "translation": "千里莺啼花红，酒旗飘。南朝许多寺庙，都在烟雨中。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-048",
+    "type": "chinese_poem",
+    "title": "蜂",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "不论平地与山尖，无限风光尽被占。\n采得百花成蜜后，为谁辛苦为谁甜。",
+      "author": "罗隐",
+      "dynasty": "唐代",
+      "authorIntro": "罗隐（833—909），唐代诗人。",
+      "translation": "蜜蜂采花酿蜜，为谁辛苦为谁甜？"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-049",
+    "type": "chinese_poem",
+    "title": "江上渔者",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "江上往来人，但爱鲈鱼美。\n君看一叶舟，出没风波里。",
+      "author": "范仲淹",
+      "dynasty": "宋代",
+      "authorIntro": "范仲淹（989—1052），北宋名臣、诗人。",
+      "translation": "江上人爱鲈鱼美，却不知渔夫在风波里危险。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-050",
+    "type": "chinese_poem",
+    "title": "夏日绝句",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "生当作人杰，死亦为鬼雄。\n至今思项羽，不肯过江东。",
+      "author": "李清照",
+      "dynasty": "宋代",
+      "authorIntro": "李清照（1084—1155），“千古第一才女”。",
+      "translation": "生为英雄，死为鬼雄。思念项羽，不肯偷生回江东。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-051",
+    "type": "chinese_poem",
+    "title": "元日",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "爆竹声中一岁除，春风送暖入屠苏。\n千门万户曈曈日，总把新桃换旧符。",
+      "author": "王安石",
+      "dynasty": "宋代",
+      "authorIntro": "王安石（1021—1086），北宋宰相、诗人。",
+      "translation": "爆竹声中过年，春风暖。旭日升，换上新桃符。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-052",
+    "type": "chinese_poem",
+    "title": "泊船瓜洲",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "京口瓜洲一水间，钟山只隔数重山。\n春风又绿江南岸，明月何时照我还。",
+      "author": "王安石",
+      "dynasty": "宋代",
+      "authorIntro": "王安石，宋代诗人。",
+      "translation": "家乡只隔几座山。春风又绿江南，何时能回家？"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-053",
+    "type": "chinese_poem",
+    "title": "书湖阴先生壁",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "茅檐长扫净无苔，花木成畦手自栽。\n一水护田将绿绕，两山排闼送青来。",
+      "author": "王安石",
+      "dynasty": "宋代",
+      "authorIntro": "王安石，宋代诗人。",
+      "translation": "院子干净，花木整齐。溪水绕田，青山送青。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-054",
+    "type": "chinese_poem",
+    "title": "六月二十七日望湖楼醉书",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "黑云翻墨未遮山，白雨跳珠乱入船。\n卷地风来忽吹散，望湖楼下水如天。",
+      "author": "苏轼",
+      "dynasty": "宋代",
+      "authorIntro": "苏轼（1037—1101），“苏东坡”。",
+      "translation": "黑云翻墨，雨跳如珠。风吹云散，湖水如天。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-055",
+    "type": "chinese_poem",
+    "title": "饮湖上初晴后雨",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "水光潋滟晴方好，山色空蒙雨亦奇。\n欲把西湖比西子，淡妆浓抹总相宜。",
+      "author": "苏轼",
+      "dynasty": "宋代",
+      "authorIntro": "苏轼，宋代诗人。",
+      "translation": "西湖晴天水美，雨天山奇。像西施一样，怎样都美。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-056",
+    "type": "chinese_poem",
+    "title": "惠崇春江晓景",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "竹外桃花三两枝，春江水暖鸭先知。\n蒌蒿满地芦芽短，正是河豚欲上时。",
+      "author": "苏轼",
+      "dynasty": "宋代",
+      "authorIntro": "苏轼，宋代诗人。",
+      "translation": "竹外桃花开，鸭子知水暖。蒌蒿长芦芽短，河豚要游来。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-057",
+    "type": "chinese_poem",
+    "title": "题西林壁",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "横看成岭侧成峰，远近高低各不同。\n不识庐山真面目，只缘身在此山中。",
+      "author": "苏轼",
+      "dynasty": "宋代",
+      "authorIntro": "苏轼，宋代诗人。",
+      "translation": "看山姿态万千。不识全貌，因在山中。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-058",
+    "type": "chinese_poem",
+    "title": "三衢道中",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "梅子黄时日日晴，小溪泛尽却山行。\n绿阴不减来时路，添得黄鹂四五声。",
+      "author": "曾几",
+      "dynasty": "宋代",
+      "authorIntro": "曾几（1085—1166），南宋诗人。",
+      "translation": "梅子黄时晴天，乘船再山行。绿荫深处听黄鹂。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-059",
+    "type": "chinese_poem",
+    "title": "示儿",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "死去元知万事空，但悲不见九州同。\n王师北定中原日，家祭无忘告乃翁。",
+      "author": "陆游",
+      "dynasty": "宋代",
+      "authorIntro": "陆游（1125—1210），南宋爱国诗人。",
+      "translation": "死后万事空，只悲国家未统一。统一之日，别忘告诉我。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-060",
+    "type": "chinese_poem",
+    "title": "秋夜将晓篱门迎凉有感",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "三万里河东入海，五千仞岳上摩天。\n遗民泪尽胡尘里，南望王师又一年。",
+      "author": "陆游",
+      "dynasty": "宋代",
+      "authorIntro": "陆游，宋代诗人。",
+      "translation": "黄河入海华山高。百姓在敌占区流泪，盼望南宋军队。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-061",
+    "type": "chinese_poem",
+    "title": "四时田园杂兴(其一)",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "昼出耘田夜绩麻，村庄儿女各当家。\n童孙未解供耕织，也傍桑阴学种瓜。",
+      "author": "范成大",
+      "dynasty": "宋代",
+      "authorIntro": "范成大（1126—1193），南宋诗人。",
+      "translation": "白天耘田晚上绩麻。小孩虽不会干活，也学种瓜。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-062",
+    "type": "chinese_poem",
+    "title": "四时田园杂兴(其二)",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "梅子金黄杏子肥，麦花雪白菜花稀。\n日长篱落无人过，唯有蜻蜓蛱蝶飞。",
+      "author": "范成大",
+      "dynasty": "宋代",
+      "authorIntro": "范成大，宋代诗人。",
+      "translation": "梅子金黄杏子肥，麦花白菜花稀。白天安静，只有蜻蜓飞。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-063",
+    "type": "chinese_poem",
+    "title": "小池",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "泉眼无声惜细流，树阴照水爱晴柔。\n小荷才露尖尖角，早有蜻蜓立上头。",
+      "author": "杨万里",
+      "dynasty": "宋代",
+      "authorIntro": "杨万里（1127—1206），南宋诗人。",
+      "translation": "泉水细流，树荫爱水。小荷刚露头，就有蜻蜓立。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-064",
+    "type": "chinese_poem",
+    "title": "晓出净慈寺送林子方",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "毕竟西湖六月中，风光不与四时同。\n接天莲叶无穷碧，映日荷花别样红。",
+      "author": "杨万里",
+      "dynasty": "宋代",
+      "authorIntro": "杨万里，宋代诗人。",
+      "translation": "六月西湖风光独特。莲叶碧绿接天，荷花映日通红。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-065",
+    "type": "chinese_poem",
+    "title": "春日",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "胜日寻芳泗水滨，无边光景一时新。\n等闲识得东风面，万紫千红总是春。",
+      "author": "朱熹",
+      "dynasty": "宋代",
+      "authorIntro": "朱熹（1130—1200），宋代理学家、诗人。",
+      "translation": "泗水边寻春，风光一新。满眼万紫千红，都是春意。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-066",
+    "type": "chinese_poem",
+    "title": "题临安邸",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "山外青山楼外楼，西湖歌舞几时休？\n暖风熏得游人醉，直把杭州作汴州。",
+      "author": "林升",
+      "dynasty": "宋代",
+      "authorIntro": "林升，南宋诗人。",
+      "translation": "青山楼阁，歌舞不停。暖风熏人，忘了国忧。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-067",
+    "type": "chinese_poem",
+    "title": "游园不值",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "应怜屐齿印苍苔，小扣柴扉久不开。\n春色满园关不住，一枝红杏出墙来。",
+      "author": "叶绍翁",
+      "dynasty": "宋代",
+      "authorIntro": "叶绍翁，南宋诗人。",
+      "translation": "主人怕踩坏青苔没开门。但春色关不住，红杏已出墙。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-068",
+    "type": "chinese_poem",
+    "title": "观书有感",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "半亩方塘一鉴开，天光云影共徘徊。\n问渠那得清如许？为有源头活水来。",
+      "author": "朱熹",
+      "dynasty": "宋代",
+      "authorIntro": "朱熹，宋代诗人。",
+      "translation": "方塘像镜子，倒映云影。水清，是因为有活水来。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-069",
+    "type": "chinese_poem",
+    "title": "乡村四月",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "绿遍山原白满川，子规声里雨如烟。\n乡村四月闲人少，才了蚕桑又插田。",
+      "author": "翁卷",
+      "dynasty": "宋代",
+      "authorIntro": "翁卷，南宋诗人。",
+      "translation": "山原绿水白，细雨如烟。四月农忙，采桑又插田。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-070",
+    "type": "chinese_poem",
+    "title": "墨梅",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "我家洗砚池头树，朵朵花开淡墨痕。\n不要人夸好颜色，只留清气满乾坤。",
+      "author": "王冕",
+      "dynasty": "元代",
+      "authorIntro": "王冕（1310—1359），元代诗人、画家。",
+      "translation": "墨梅清淡，不求夸赞，只留清香在人间。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-071",
+    "type": "chinese_poem",
+    "title": "石灰吟",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "千锤万凿出深山，烈火焚烧若等闲。\n粉身碎骨全不怕，要留清白在人间。",
+      "author": "于谦",
+      "dynasty": "明代",
+      "authorIntro": "于谦（1398—1457），明代名臣。",
+      "translation": "石灰经受锤击火烧，不怕碎骨，只求清白。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-072",
+    "type": "chinese_poem",
+    "title": "己亥杂诗",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "中级",
+    "content": {
+      "text": "九州生气恃风雷，万马齐喑究可哀。\n我劝天公重抖擞，不拘一格降人才。",
+      "author": "龚自珍",
+      "dynasty": "清代",
+      "authorIntro": "龚自珍（1792—1841），清代诗人。",
+      "translation": "国家需要活力。希望天公重振精神，选拔人才。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-073",
+    "type": "chinese_poem",
+    "title": "村居",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "草长莺飞二月天，拂堤杨柳醉春烟。\n儿童散学归来早，忙趁东风放纸鸢。",
+      "author": "高鼎",
+      "dynasty": "清代",
+      "authorIntro": "高鼎，清代诗人。",
+      "translation": "二月草长莺飞，杨柳如烟。小孩放学早，忙着放风筝。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-074",
+    "type": "chinese_poem",
+    "title": "所见",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "牧童骑黄牛，歌声振林樾。\n意欲捕鸣蝉，忽然闭口立。",
+      "author": "袁枚",
+      "dynasty": "清代",
+      "authorIntro": "袁枚（1716—1797），清代诗人。",
+      "translation": "牧童骑牛唱歌。想抓蝉，忽然停声站立。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  },
+  {
+    "taskId": "poem-075",
+    "type": "chinese_poem",
+    "title": "竹石",
+    "subject": "语文",
+    "icon": "brush",
+    "iconBg": "#fee2e2",
+    "iconColor": "#ef4444",
+    "subtitle": "古诗背诵",
+    "difficulty": "初级",
+    "content": {
+      "text": "咬定青山不放松，立根原在破岩中。\n千磨万击还坚劲，任尔东西南北风。",
+      "author": "郑燮",
+      "dynasty": "清代",
+      "authorIntro": "郑燮（1693—1765），“扬州八怪”之一。",
+      "translation": "竹子扎根岩石，坚韧不拔，不怕狂风吹。"
+    },
+    "requirements": [
+      {
+        "id": "r1",
+        "label": "古诗朗读",
+        "type": "recording",
+        "required": true
+      },
+      {
+        "id": "r2",
+        "label": "翻译朗读",
+        "type": "recording",
+        "required": true
+      }
+    ]
+  }
+]
