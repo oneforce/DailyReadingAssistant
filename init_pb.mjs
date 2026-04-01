@@ -9,6 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const envPath = path.resolve(__dirname, '.env');
 let email = '';
 let password = '';
+let apiUrl = '';
 
 try {
   const envData = fs.readFileSync(envPath, 'utf8');
@@ -17,6 +18,7 @@ try {
     if (k && v.length) {
       if (k.trim() === 'PB_ADMIN_EMAIL') email = v.join('=').trim().replace(/^['"]|['"]$/g, '');
       if (k.trim() === 'PB_ADMIN_PASSWORD') password = v.join('=').trim().replace(/^['"]|['"]$/g, '');
+      if (k.trim() === 'VITE_PB_API_URL') apiUrl = v.join('=').trim().replace(/^['"]|['"]$/g, '');
     }
   });
 } catch (e) {
@@ -24,10 +26,11 @@ try {
 }
 
 // 支持环境变量兜底
-email = email || process.env.PB_ADMIN_EMAIL || 'onefours@gmail.com';
-password = password || process.env.PB_ADMIN_PASSWORD || '!QAZ2wsx3edc';
+email = email || process.env.PB_ADMIN_EMAIL;
+password = password || process.env.PB_ADMIN_PASSWORD;
+apiUrl = apiUrl || process.env.VITE_PB_API_URL;
 
-const pb = new PocketBase('http://106.54.239.44:9001');
+const pb = new PocketBase(apiUrl);
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
 async function run() {

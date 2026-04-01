@@ -43,6 +43,7 @@
 在本项目根菜单下运行：
 ```bash
 DOCKER_BUILDKIT=1 docker build --output type=local,dest=./dist_output .
+\cp -rf  /root/workspace/DailyReadingAssistant/dist_output/* /var/www/dailyreading/
 ```
 执行完毕后，当前目录会出现一个叫 `dist_output/` 的文件夹，里面存放的即是生产环境下最小、最优化的前端文件。
 

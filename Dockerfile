@@ -4,7 +4,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # 为了更好的利用 Docker 缓存层，先仅拷贝 package 配置
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 # 由于项目在国内，替换 npm 源为淘宝源来加速下载，并安装依赖包
 RUN npm config set registry https://registry.npmmirror.com && \
