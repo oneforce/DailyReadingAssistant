@@ -1902,5 +1902,37 @@
     "startTime": "2026-04-02 10:22:11.988Z",
     "target": "recording",
     "taskId": "template-text-008"
+  },
+  {
+    "action": "record_complete",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 180,
+    "eventType": "recording",
+    "id": "4y7q7263g51j75g",
+    "isSpecial": false,
+    "page": "TextbookReadPage",
+    "pointsAwarded": 0,
+    "recordingUrl": "blob:https://yuxi.uyhnm.cn/0ad981aa-a413-4ebf-a957-5bcfa432d5eb",
+    "specialReason": "",
+    "startTime": "2026-04-02 10:25:49.752Z",
+    "target": "recording",
+    "taskId": "template-text-008"
+  },
+  {
+    "action": "complete",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "special",
+    "id": "142th36t3m545k7",
+    "isSpecial": true,
+    "page": "任务处理",
+    "pointsAwarded": 10,
+    "recordingUrl": "",
+    "specialReason": "完成一项学习任务",
+    "startTime": "2026-04-02 10:28:52.064Z",
+    "target": "task",
+    "taskId": "template-text-008"
   }
 ]

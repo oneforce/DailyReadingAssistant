@@ -191,8 +191,8 @@
   {
     "collectionId": "pbc_2602490748",
     "collectionName": "tasks",
-    "completed": false,
-    "completedAt": "",
+    "completed": true,
+    "completedAt": "2026-04-02 10:28:52.064Z",
     "completedDuration": 0,
     "content": {
       "author": "佚名",
