@@ -92,18 +92,50 @@ async function run() {
   const token = await authenticate();
   console.log('✅ Authentication successful\n');
 
-  // Step 1: Restore schemas (create missing collections)
+  // Step 1: Restore schemas (create or update collections)
   const schemasPath = path.join(DATA_DIR, '_schemas.json');
   if (fs.existsSync(schemasPath)) {
     console.log('--- Restoring Collection Schemas ---');
     const schemas = JSON.parse(fs.readFileSync(schemasPath, 'utf8'));
 
     const existing = await listCollections(token);
-    const existingNames = new Set(existing.map(c => c.name));
+    const existingMap = new Map(existing.map(c => [c.name, c]));
 
     for (const schema of schemas) {
-      if (existingNames.has(schema.name)) {
-        console.log(`  ⏭️  Collection "${schema.name}" already exists, skipping`);
+      const existingCol = existingMap.get(schema.name);
+
+      if (existingCol) {
+        // Check if the existing collection has user-defined fields
+        const userFields = (existingCol.fields || []).filter(f => !f.system);
+        const backupFields = (schema.fields || []).filter(f => !f.system);
+
+        if (userFields.length < backupFields.length) {
+          // Update schema with PATCH
+          const res = await fetch(`${PB_URL}/api/collections/${existingCol.id}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: token,
+            },
+            body: JSON.stringify({
+              fields: schema.fields,
+              indexes: schema.indexes,
+              listRule: schema.listRule ?? '',
+              viewRule: schema.viewRule ?? '',
+              createRule: schema.createRule ?? '',
+              updateRule: schema.updateRule ?? '',
+              deleteRule: schema.deleteRule ?? '',
+            }),
+          });
+          if (res.ok) {
+            console.log(`  🔄 Updated schema: ${schema.name} (${backupFields.length} fields)`);
+          } else {
+            const body = await res.text();
+            console.error(`  ❌ Failed to update "${schema.name}": ${body}`);
+          }
+        } else {
+          console.log(`  ⏭️  Collection "${schema.name}" already exists (${userFields.length} fields)`);
+        }
         continue;
       }
 
