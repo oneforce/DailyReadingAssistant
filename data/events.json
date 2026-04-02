@@ -1614,5 +1614,21 @@
     "startTime": "2026-04-02 10:05:45.299Z",
     "target": "那一刻，我长大了",
     "taskId": ""
+  },
+  {
+    "action": "record_complete",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 128,
+    "eventType": "recording",
+    "id": "aulbd01n45p4904",
+    "isSpecial": false,
+    "page": "TextbookReadPage",
+    "pointsAwarded": 0,
+    "recordingUrl": "blob:https://yuxi.uyhnm.cn/8c3b6564-3811-437c-88e7-1011baf2861a",
+    "specialReason": "",
+    "startTime": "2026-04-02 10:06:46.423Z",
+    "target": "recording",
+    "taskId": "template-text-001"
   }
 ]
