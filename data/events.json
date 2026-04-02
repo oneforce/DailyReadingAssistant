@@ -1630,5 +1630,21 @@
     "startTime": "2026-04-02 10:06:46.423Z",
     "target": "recording",
     "taskId": "template-text-001"
+  },
+  {
+    "action": "record_complete",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 110,
+    "eventType": "recording",
+    "id": "cp34872onq2es69",
+    "isSpecial": false,
+    "page": "TextbookReadPage",
+    "pointsAwarded": 0,
+    "recordingUrl": "blob:https://yuxi.uyhnm.cn/4266a699-5846-4487-8fbb-bdd671bb3628",
+    "specialReason": "",
+    "startTime": "2026-04-02 10:08:58.987Z",
+    "target": "recording",
+    "taskId": "template-text-001"
   }
 ]
