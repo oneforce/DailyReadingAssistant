@@ -1,0 +1,10 @@
+{
+  "name": "pocket-data-backup",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automated PocketBase data backup to Git",
+  "type": "module",
+  "dependencies": {
+    "pocketbase": "^0.26.8"
+  }
+}

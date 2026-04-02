@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  pocket-data-backup:
+    container_name: pocket-data-backup
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+
+    environment:
+      # ── PocketBase 备份源 (A) ──
+      PB_API_URL: "${PB_API_URL}"
+      PB_ADMIN_EMAIL: "${PB_ADMIN_EMAIL}"
+      PB_ADMIN_PASSWORD: "${PB_ADMIN_PASSWORD}"
+
+      # ── PocketBase 恢复目标 (B)（可选） ──
+      PB_RESTORE_API_URL: "${PB_RESTORE_API_URL:-}"
+      PB_RESTORE_ADMIN_EMAIL: "${PB_RESTORE_ADMIN_EMAIL:-}"
+      PB_RESTORE_ADMIN_PASSWORD: "${PB_RESTORE_ADMIN_PASSWORD:-}"
+
+      # ── Git config ──
+      GIT_REPO_URL: "git@github.com:oneforce/DailyReadingAssistant.git"
+      GIT_USER_NAME: "${GIT_USER_NAME:-pocket-data-backup}"
+      GIT_USER_EMAIL: "${GIT_USER_EMAIL:-backup@dailyreading.app}"
+
+      # ── Behavior ──
+      RUN_ON_START: "${RUN_ON_START:-true}"   # Run backup immediately on container start
+      TZ: "Asia/Shanghai"
+
+    volumes:
+      # Mount SSH private key (read-only) for Git push authentication
+      - "${SSH_KEY_PATH:-~/.ssh/id_rsa}:/root/.ssh/id_rsa:ro"
+
+      # Persist backup logs
+      - backup-logs:/app/logs
+
+volumes:
+  backup-logs:
+    driver: local
