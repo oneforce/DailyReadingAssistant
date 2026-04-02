@@ -92,8 +92,20 @@ async function run() {
       const allRecords = [];
       let page = 1;
       const perPage = 200;
+
+      // Some PB versions have issues with superuser-authenticated list queries.
+      // Try authenticated first, fallback to unauthenticated for public collections.
+      let client = pb;
+      try {
+        await client.collection(name).getList(1, 1);
+      } catch {
+        console.log(`    ↳ Retrying ${name} without auth (public collection)...`);
+        client = new PocketBase(PB_URL);
+        client.autoCancellation(false);
+      }
+
       while (true) {
-        const result = await pb.collection(name).getList(page, perPage, {
+        const result = await client.collection(name).getList(page, perPage, {
           sort: '-created',
         });
         allRecords.push(...result.items);
