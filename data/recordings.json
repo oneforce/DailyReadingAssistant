@@ -7,5 +7,14 @@
     "id": "678mft1xtr51odj",
     "subKey": "textbook-1",
     "taskId": "template-text-003"
+  },
+  {
+    "audio": "template_text_017_textbook_2_od8tihyl2z.webm",
+    "collectionId": "pbc_392670462",
+    "collectionName": "recordings",
+    "duration": 65,
+    "id": "1v69zyfo44b9dsp",
+    "subKey": "textbook-2",
+    "taskId": "template-text-017"
   }
 ]
