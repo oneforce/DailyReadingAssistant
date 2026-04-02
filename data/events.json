@@ -1934,5 +1934,53 @@
     "startTime": "2026-04-02 10:28:52.064Z",
     "target": "task",
     "taskId": "template-text-008"
+  },
+  {
+    "action": "load_more",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "8cskrhz0jxcu0xw",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-02 10:28:54.453Z",
+    "target": "加载更多",
+    "taskId": ""
+  },
+  {
+    "action": "load_more",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "badvicm7var42y8",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-02 10:28:58.811Z",
+    "target": "加载更多",
+    "taskId": ""
+  },
+  {
+    "action": "start_task",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "734461wlmgm2z56",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-02 10:29:04.941Z",
+    "target": "我的“奸商”老爸",
+    "taskId": ""
   }
 ]
