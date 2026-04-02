@@ -88,26 +88,36 @@ async function run() {
   for (const collection of userCollections) {
     const name = collection.name;
     try {
-      const records = await pb.collection(name).getFullList({
-        sort: '-created',
-      });
+      // Use paginated getList to avoid timeout on large collections
+      const allRecords = [];
+      let page = 1;
+      const perPage = 200;
+      while (true) {
+        const result = await pb.collection(name).getList(page, perPage, {
+          sort: '-created',
+        });
+        allRecords.push(...result.items);
+        if (result.items.length < perPage) break;
+        page++;
+      }
 
       const filePath = path.join(EXPORT_DIR, `${name}.json`);
-      fs.writeFileSync(filePath, JSON.stringify(records, null, 2));
+      fs.writeFileSync(filePath, JSON.stringify(allRecords, null, 2));
 
       metadata.collections.push({
         name,
-        recordCount: records.length,
+        recordCount: allRecords.length,
         type: collection.type,
       });
 
-      console.log(`  ✅ ${name}: ${records.length} records`);
+      console.log(`  ✅ ${name}: ${allRecords.length} records`);
     } catch (err) {
-      console.error(`  ❌ ${name}: ${err.message}`);
+      const detail = err?.data ? JSON.stringify(err.data) : err.message;
+      console.error(`  ❌ ${name}: ${detail}`);
       metadata.collections.push({
         name,
         recordCount: 0,
-        error: err.message,
+        error: detail,
       });
     }
   }

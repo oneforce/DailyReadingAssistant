@@ -7,6 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
+    network_mode: host
 
     environment:
       # ── PocketBase 备份源 (A) ──

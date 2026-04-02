@@ -66,7 +66,9 @@ echo "${LOG_PREFIX}   ✅ Pushed to origin/${BRANCH_NAME}"
 # ----------------------------------------------------------
 echo "${LOG_PREFIX} [5/5] Cleaning up branches older than ${RETENTION_DAYS} days..."
 
-CUTOFF_DATE=$(date -d "-${RETENTION_DAYS} days" '+%Y%m%d' 2>/dev/null || date -v-${RETENTION_DAYS}d '+%Y%m%d')
+# Calculate cutoff date using epoch arithmetic (BusyBox compatible)
+CUTOFF_EPOCH=$(( $(date +%s) - RETENTION_DAYS * 86400 ))
+CUTOFF_DATE=$(date -u -d "@${CUTOFF_EPOCH}" '+%Y%m%d' 2>/dev/null || date -u -r "${CUTOFF_EPOCH}" '+%Y%m%d')
 
 # List remote backup branches via ls-remote (no fetch needed)
 REMOTE_BRANCHES=$(git ls-remote --heads origin "${BRANCH_PREFIX}*" 2>/dev/null | awk '{print $2}' | sed 's|refs/heads/||')
