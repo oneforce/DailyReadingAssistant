@@ -2,8 +2,11 @@
  * export-data.mjs
  * Exports all PocketBase collections and records to JSON files.
  *
+ * Uses raw fetch() for record queries to avoid SDK/server version mismatch.
+ * PB SDK is only used for auth and collection schema listing.
+ *
  * Environment variables:
- *   PB_API_URL       - PocketBase API endpoint (e.g. http://106.54.239.44:9001)
+ *   PB_API_URL       - PocketBase API endpoint
  *   PB_ADMIN_EMAIL   - Superuser email
  *   PB_ADMIN_PASSWORD - Superuser password
  *   EXPORT_DIR       - Directory to write JSON files (default: /app/backup-repo/data)
@@ -32,6 +35,35 @@ function isSystemCollection(name) {
   return SYSTEM_PREFIXES.some(prefix => name.startsWith(prefix));
 }
 
+/**
+ * Fetch all records from a collection using raw HTTP API.
+ * Bypasses PB SDK to avoid version mismatch issues.
+ */
+async function fetchAllRecords(collectionName) {
+  const allRecords = [];
+  let page = 1;
+  const perPage = 200;
+  const baseUrl = PB_URL.replace(/\/$/, '');
+
+  while (true) {
+    const url = `${baseUrl}/api/collections/${encodeURIComponent(collectionName)}/records?page=${page}&perPage=${perPage}&sort=-created`;
+    const res = await fetch(url);
+
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(`HTTP ${res.status}: ${body}`);
+    }
+
+    const data = await res.json();
+    allRecords.push(...data.items);
+
+    if (data.items.length < perPage) break;
+    page++;
+  }
+
+  return allRecords;
+}
+
 async function run() {
   const startTime = Date.now();
   console.log(`\n${'='.repeat(60)}`);
@@ -40,12 +72,12 @@ async function run() {
   console.log(`  Target: ${PB_URL}`);
   console.log(`${'='.repeat(60)}\n`);
 
-  // Step 1: Authenticate
+  // Step 1: Authenticate (SDK used only for auth + schema listing)
   console.log('[1/4] Authenticating as superuser...');
   await pb.collection('_superusers').authWithPassword(EMAIL, PASSWORD);
   console.log('✅ Authentication successful');
 
-  // Step 2: Fetch all collections
+  // Step 2: Fetch all collections (via SDK - works fine)
   console.log('\n[2/4] Fetching collection list...');
   const allCollections = await pb.collections.getFullList();
   const userCollections = allCollections.filter(c => !isSystemCollection(c.name));
@@ -88,30 +120,8 @@ async function run() {
   for (const collection of userCollections) {
     const name = collection.name;
     try {
-      // Use paginated getList to avoid timeout on large collections
-      const allRecords = [];
-      let page = 1;
-      const perPage = 200;
-
-      // Some PB versions have issues with superuser-authenticated list queries.
-      // Try authenticated first, fallback to unauthenticated for public collections.
-      let client = pb;
-      try {
-        await client.collection(name).getList(1, 1);
-      } catch {
-        console.log(`    ↳ Retrying ${name} without auth (public collection)...`);
-        client = new PocketBase(PB_URL);
-        client.autoCancellation(false);
-      }
-
-      while (true) {
-        const result = await client.collection(name).getList(page, perPage, {
-          sort: '-created',
-        });
-        allRecords.push(...result.items);
-        if (result.items.length < perPage) break;
-        page++;
-      }
+      // Use raw fetch to query records (avoids SDK/server version mismatch)
+      const allRecords = await fetchAllRecords(name);
 
       const filePath = path.join(EXPORT_DIR, `${name}.json`);
       fs.writeFileSync(filePath, JSON.stringify(allRecords, null, 2));
@@ -124,12 +134,11 @@ async function run() {
 
       console.log(`  ✅ ${name}: ${allRecords.length} records`);
     } catch (err) {
-      const detail = err?.data ? JSON.stringify(err.data) : err.message;
-      console.error(`  ❌ ${name}: ${detail}`);
+      console.error(`  ❌ ${name}: ${err.message}`);
       metadata.collections.push({
         name,
         recordCount: 0,
-        error: detail,
+        error: err.message,
       });
     }
   }
