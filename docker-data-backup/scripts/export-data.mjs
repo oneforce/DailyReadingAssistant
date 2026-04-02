@@ -38,16 +38,22 @@ function isSystemCollection(name) {
 /**
  * Fetch all records from a collection using raw HTTP API.
  * Bypasses PB SDK to avoid version mismatch issues.
+ * @param {string} collectionName
+ * @param {string} authToken - superuser auth token
  */
-async function fetchAllRecords(collectionName) {
+async function fetchAllRecords(collectionName, authToken) {
   const allRecords = [];
   let page = 1;
   const perPage = 200;
   const baseUrl = PB_URL.replace(/\/$/, '');
 
   while (true) {
-    const url = `${baseUrl}/api/collections/${encodeURIComponent(collectionName)}/records?page=${page}&perPage=${perPage}&sort=-created`;
-    const res = await fetch(url);
+    const url = `${baseUrl}/api/collections/${encodeURIComponent(collectionName)}/records?page=${page}&perPage=${perPage}`;
+    const headers = {};
+    if (authToken) {
+      headers['Authorization'] = authToken;
+    }
+    const res = await fetch(url, { headers });
 
     if (!res.ok) {
       const body = await res.text();
@@ -75,6 +81,7 @@ async function run() {
   // Step 1: Authenticate (SDK used only for auth + schema listing)
   console.log('[1/4] Authenticating as superuser...');
   await pb.collection('_superusers').authWithPassword(EMAIL, PASSWORD);
+  const authToken = pb.authStore.token;
   console.log('✅ Authentication successful');
 
   // Step 2: Fetch all collections (via SDK - works fine)
@@ -120,8 +127,8 @@ async function run() {
   for (const collection of userCollections) {
     const name = collection.name;
     try {
-      // Use raw fetch to query records (avoids SDK/server version mismatch)
-      const allRecords = await fetchAllRecords(name);
+      // Use raw fetch with auth token (avoids SDK/server version mismatch)
+      const allRecords = await fetchAllRecords(name, authToken);
 
       const filePath = path.join(EXPORT_DIR, `${name}.json`);
       fs.writeFileSync(filePath, JSON.stringify(allRecords, null, 2));
