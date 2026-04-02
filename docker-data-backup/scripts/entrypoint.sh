@@ -20,17 +20,19 @@ if [ ! -f /root/.ssh/id_rsa ]; then
     exit 1
 fi
 
-chmod 600 /root/.ssh/id_rsa
+# Copy read-only mounted key to writable location and set permissions
+cp /root/.ssh/id_rsa /root/.ssh/id_rsa_copy
+chmod 600 /root/.ssh/id_rsa_copy
 
 # Add GitHub to known hosts to avoid interactive prompt
 ssh-keyscan -t rsa,ecdsa,ed25519 github.com >> /root/.ssh/known_hosts 2>/dev/null
 
-# Configure SSH to use the mounted key
+# Configure SSH to use the copied key
 cat > /root/.ssh/config << 'EOF'
 Host github.com
     HostName github.com
     User git
-    IdentityFile /root/.ssh/id_rsa
+    IdentityFile /root/.ssh/id_rsa_copy
     IdentitiesOnly yes
     StrictHostKeyChecking no
 EOF

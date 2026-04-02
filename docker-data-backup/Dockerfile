@@ -8,7 +8,7 @@ LABEL maintainer="oneforce" \
       description="PocketBase daily data backup to Git with branch management"
 
 # Install system dependencies: git, openssh, cron, curl, jq, tzdata
-RUN apk add --no-cache \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && apk add --no-cache \
     git \
     openssh-client \
     dcron \
