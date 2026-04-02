@@ -180,11 +180,13 @@ async function run() {
         data[key] = value;
       }
 
-      // Try create first
       const res = await createRecord(collectionName, data, token);
       if (res.ok) {
         created++;
       } else {
+        const postStatus = res.status;
+        const postBody = await res.text();
+
         // Create failed (likely duplicate) → try PATCH update
         const patchRes = await fetch(
           `${PB_URL}/api/collections/${encodeURIComponent(collectionName)}/records/${record.id}`,
@@ -202,8 +204,10 @@ async function run() {
         } else {
           failed++;
           if (failed <= 3) {
-            const body = await patchRes.text();
-            console.error(`    ❌ Record ${record.id}: ${body}`);
+            const patchBody = await patchRes.text();
+            console.error(`    ❌ Record ${record.id}:`);
+            console.error(`       [POST ${postStatus}] ${postBody}`);
+            console.error(`       [PATCH ${patchRes.status}] ${patchBody}`);
           }
         }
       }
