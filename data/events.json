@@ -1838,5 +1838,37 @@
     "startTime": "2026-04-02 10:17:57.280Z",
     "target": "读人民英雄纪念碑碑文有感",
     "taskId": ""
+  },
+  {
+    "action": "load_more",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "a4zcy20zfusvi1n",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-02 10:18:32.984Z",
+    "target": "加载更多",
+    "taskId": ""
+  },
+  {
+    "action": "start_task",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "b6d7b5s1ucxjhy5",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-02 10:18:35.523Z",
+    "target": "他辣怕了",
+    "taskId": ""
   }
 ]
