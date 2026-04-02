@@ -1,0 +1,32 @@
+{
+  "exportTime": "2026-04-02T02:54:45.044Z",
+  "pbUrl": "http://106.54.239.44:9001",
+  "collections": [
+    {
+      "name": "users",
+      "recordCount": 1,
+      "type": "auth"
+    },
+    {
+      "name": "read_app",
+      "recordCount": 0,
+      "type": "auth"
+    },
+    {
+      "name": "tasks",
+      "recordCount": 191,
+      "type": "base"
+    },
+    {
+      "name": "recordings",
+      "recordCount": 0,
+      "type": "base"
+    },
+    {
+      "name": "events",
+      "recordCount": 97,
+      "type": "base"
+    }
+  ],
+  "durationSeconds": 0.2
+}
