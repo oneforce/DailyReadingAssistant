@@ -2046,5 +2046,53 @@
     "startTime": "2026-04-02 10:32:30.429Z",
     "target": "task",
     "taskId": "template-text-017"
+  },
+  {
+    "action": "tab_switch",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "hnv3qbj10v2514n",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-02 11:53:00.169Z",
+    "target": "Tab_completed",
+    "taskId": ""
+  },
+  {
+    "action": "review_task",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "4bpv08k870s7bi4",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-02 11:53:01.349Z",
+    "target": "我的“奸商”老爸",
+    "taskId": ""
+  },
+  {
+    "action": "start_task",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "obsu5xr1pm85q12",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-02 11:53:03.438Z",
+    "target": "那一刻，我长大了",
+    "taskId": ""
   }
 ]
