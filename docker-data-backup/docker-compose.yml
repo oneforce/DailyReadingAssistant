@@ -33,9 +33,10 @@ services:
       # Mount SSH private key (read-only) for Git push authentication
       - "${SSH_KEY_PATH:-~/.ssh/id_rsa}:/root/.ssh/id_rsa:ro"
 
-      # Persist backup logs
-      - backup-logs:/app/logs
+      # Persist backup data to host (survives container rebuild)
+      - ./backup-repo:/app/backup-repo
 
-volumes:
-  backup-logs:
-    driver: local
+      # Persist backup logs
+      - ./logs:/app/logs
+
+

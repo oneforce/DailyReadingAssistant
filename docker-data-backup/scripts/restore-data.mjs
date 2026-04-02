@@ -1,6 +1,7 @@
 /**
  * restore-data.mjs
  * Restores PocketBase collections and records from exported JSON files.
+ * Uses raw fetch() for all API calls to avoid SDK/server version mismatch.
  *
  * Environment variables (restore target takes priority):
  *   PB_RESTORE_API_URL    → PB_API_URL         (fallback)
@@ -8,30 +9,87 @@
  *   PB_RESTORE_ADMIN_PASSWORD → PB_ADMIN_PASSWORD (fallback)
  *   RESTORE_DATA_DIR      - Directory containing exported JSON files
  */
-import PocketBase from 'pocketbase';
 import fs from 'fs';
 import path from 'path';
 
 // Prefer PB_RESTORE_* (target B), fallback to PB_* (source A)
-const PB_URL = process.env.PB_RESTORE_API_URL || process.env.PB_API_URL;
+const PB_URL = (process.env.PB_RESTORE_API_URL || process.env.PB_API_URL || '').replace(/\/$/, '');
 const EMAIL = process.env.PB_RESTORE_ADMIN_EMAIL || process.env.PB_ADMIN_EMAIL;
 const PASSWORD = process.env.PB_RESTORE_ADMIN_PASSWORD || process.env.PB_ADMIN_PASSWORD;
 const DATA_DIR = process.env.RESTORE_DATA_DIR;
 
 if (!PB_URL || !EMAIL || !PASSWORD || !DATA_DIR) {
-  console.error('❌ Missing env: PB_API_URL, PB_ADMIN_EMAIL, PB_ADMIN_PASSWORD, RESTORE_DATA_DIR');
+  console.error('❌ Missing env: PB_RESTORE_API_URL/PB_API_URL, email, password, RESTORE_DATA_DIR');
   process.exit(1);
 }
 
-const pb = new PocketBase(PB_URL);
-pb.autoCancellation(false);
+/** Authenticate as superuser, return token */
+async function authenticate() {
+  const res = await fetch(`${PB_URL}/api/collections/_superusers/auth-with-password`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ identity: EMAIL, password: PASSWORD }),
+  });
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Auth failed (${res.status}): ${body}`);
+  }
+  const data = await res.json();
+  return data.token;
+}
+
+/** List existing collections */
+async function listCollections(token) {
+  const res = await fetch(`${PB_URL}/api/collections?perPage=200`, {
+    headers: { Authorization: token },
+  });
+  if (!res.ok) throw new Error(`List collections failed: ${res.status}`);
+  const data = await res.json();
+  return data.items || data;
+}
+
+/** Create a collection from schema */
+async function createCollection(schema, token) {
+  const res = await fetch(`${PB_URL}/api/collections`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+    body: JSON.stringify({
+      name: schema.name,
+      type: schema.type,
+      schema: schema.fields || schema.schema,
+      indexes: schema.indexes,
+      listRule: schema.listRule ?? '',
+      viewRule: schema.viewRule ?? '',
+      createRule: schema.createRule ?? '',
+      updateRule: schema.updateRule ?? '',
+      deleteRule: schema.deleteRule ?? '',
+    }),
+  });
+  return res;
+}
+
+/** Create a record in a collection */
+async function createRecord(collectionName, recordData, token) {
+  const res = await fetch(`${PB_URL}/api/collections/${encodeURIComponent(collectionName)}/records`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+    body: JSON.stringify(recordData),
+  });
+  return res;
+}
 
 async function run() {
   console.log(`Restoring data from: ${DATA_DIR}`);
   console.log(`Target PocketBase: ${PB_URL}\n`);
 
   // Authenticate
-  await pb.collection('_superusers').authWithPassword(EMAIL, PASSWORD);
+  const token = await authenticate();
   console.log('✅ Authentication successful\n');
 
   // Step 1: Restore schemas (create missing collections)
@@ -40,30 +98,21 @@ async function run() {
     console.log('--- Restoring Collection Schemas ---');
     const schemas = JSON.parse(fs.readFileSync(schemasPath, 'utf8'));
 
-    const existingCollections = await pb.collections.getFullList();
-    const existingNames = new Set(existingCollections.map(c => c.name));
+    const existing = await listCollections(token);
+    const existingNames = new Set(existing.map(c => c.name));
 
     for (const schema of schemas) {
       if (existingNames.has(schema.name)) {
-        console.log(`  ⏭️  Collection "${schema.name}" already exists, skipping schema`);
+        console.log(`  ⏭️  Collection "${schema.name}" already exists, skipping`);
         continue;
       }
 
-      try {
-        await pb.collections.create({
-          name: schema.name,
-          type: schema.type,
-          fields: schema.fields,
-          indexes: schema.indexes,
-          listRule: schema.listRule ?? '',
-          viewRule: schema.viewRule ?? '',
-          createRule: schema.createRule ?? '',
-          updateRule: schema.updateRule ?? '',
-          deleteRule: schema.deleteRule ?? '',
-        });
+      const res = await createCollection(schema, token);
+      if (res.ok) {
         console.log(`  ✅ Created collection: ${schema.name}`);
-      } catch (err) {
-        console.error(`  ❌ Failed to create "${schema.name}": ${err.message}`);
+      } else {
+        const body = await res.text();
+        console.error(`  ❌ Failed to create "${schema.name}": ${body}`);
       }
     }
     console.log('');
@@ -90,30 +139,27 @@ async function run() {
     let failed = 0;
 
     for (const record of records) {
-      // Build the record data (exclude system fields)
-      const data = {};
+      // Build record data (exclude system fields, keep id)
+      const data = { id: record.id };
       for (const [key, value] of Object.entries(record)) {
-        // Skip PocketBase system fields
-        if (['id', 'created', 'updated', 'collectionId', 'collectionName', 'expand'].includes(key)) {
+        if (['created', 'updated', 'collectionId', 'collectionName', 'expand'].includes(key)) {
           continue;
         }
         data[key] = value;
       }
 
-      try {
-        // Try to create with original ID to maintain references
-        await pb.collection(collectionName).create({
-          id: record.id,
-          ...data,
-        });
+      const res = await createRecord(collectionName, data, token);
+      if (res.ok) {
         restored++;
-      } catch (err) {
-        if (err?.status === 400 || err?.message?.includes('unique')) {
-          skipped++;
+      } else {
+        const status = res.status;
+        if (status === 400) {
+          skipped++; // likely duplicate
         } else {
           failed++;
           if (failed <= 3) {
-            console.error(`    ❌ Record ${record.id}: ${err.message}`);
+            const body = await res.text();
+            console.error(`    ❌ Record ${record.id}: HTTP ${status} - ${body}`);
           }
         }
       }

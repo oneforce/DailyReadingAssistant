@@ -42,33 +42,44 @@ if [ -z "${RESTORE_URL}" ] || [ -z "${RESTORE_EMAIL}" ] || [ -z "${RESTORE_PASS}
 fi
 
 # ----------------------------------------------------------
-# Step 1: Clone repo and checkout backup branch
+# Step 1: Locate backup data (local first, then Git)
 # ----------------------------------------------------------
-echo "[1/3] Fetching backup data..."
+LOCAL_DATA="/app/backup-repo/data"
+NEED_CLONE=false
 
-rm -rf "${REPO_DIR}"
-git clone "${GIT_REPO_URL}" "${REPO_DIR}"
-cd "${REPO_DIR}"
+if [ -z "${BRANCH}" ] && [ -d "${LOCAL_DATA}" ] && [ -f "${LOCAL_DATA}/_metadata.json" ]; then
+    # Use local backup data (fastest path)
+    DATA_DIR="${LOCAL_DATA}"
+    echo "[1/3] Using local backup data"
+    echo "  📁 ${DATA_DIR}"
+else
+    echo "[1/3] Fetching backup data from Git..."
 
-if [ -z "${BRANCH}" ]; then
-    # Find latest backup branch
-    BRANCH=$(git branch -r | grep "${BRANCH_PREFIX}" | sort -r | head -1 | sed 's|origin/||' | xargs)
+    rm -rf "${REPO_DIR}"
+
     if [ -z "${BRANCH}" ]; then
-        echo "❌ No backup branch found!"
+        # Find latest backup branch via ls-remote
+        BRANCH=$(git ls-remote --heads "${GIT_REPO_URL}" "${BRANCH_PREFIX}*" 2>/dev/null \
+            | awk '{print $2}' | sed 's|refs/heads/||' | sort -r | head -1)
+        if [ -z "${BRANCH}" ]; then
+            echo "❌ No backup branch found!"
+            exit 1
+        fi
+        echo "  Auto-selected latest branch: ${BRANCH}"
+    fi
+
+    # Shallow clone only the target branch
+    git clone --depth 1 --branch "${BRANCH}" "${GIT_REPO_URL}" "${REPO_DIR}"
+    DATA_DIR="${REPO_DIR}/data"
+    NEED_CLONE=true
+
+    if [ ! -d "${DATA_DIR}" ]; then
+        echo "❌ No data directory found in branch ${BRANCH}"
         exit 1
     fi
-    echo "  Auto-selected latest branch: ${BRANCH}"
+    echo "  ✅ Checked out: ${BRANCH}"
 fi
 
-git checkout "${BRANCH}"
-
-DATA_DIR="${REPO_DIR}/data"
-if [ ! -d "${DATA_DIR}" ]; then
-    echo "❌ No data directory found in branch ${BRANCH}"
-    exit 1
-fi
-
-echo "  ✅ Checked out: ${BRANCH}"
 echo "  📁 Data directory: ${DATA_DIR}"
 
 # ----------------------------------------------------------
@@ -101,5 +112,7 @@ echo "  ✅ Restore Complete"
 echo "============================================"
 echo ""
 
-# Cleanup
-rm -rf "${REPO_DIR}"
+# Cleanup (only if we cloned from Git)
+if [ "${NEED_CLONE}" = "true" ]; then
+    rm -rf "${REPO_DIR}"
+fi
