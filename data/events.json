@@ -1982,5 +1982,21 @@
     "startTime": "2026-04-02 10:29:04.941Z",
     "target": "我的“奸商”老爸",
     "taskId": ""
+  },
+  {
+    "action": "record_complete",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 69,
+    "eventType": "recording",
+    "id": "o94fu1v02073fkg",
+    "isSpecial": false,
+    "page": "TextbookReadPage",
+    "pointsAwarded": 0,
+    "recordingUrl": "blob:https://yuxi.uyhnm.cn/4a30e745-ffcc-4766-bb52-3b7b232c38c4",
+    "specialReason": "",
+    "startTime": "2026-04-02 10:29:13.152Z",
+    "target": "recording",
+    "taskId": "template-text-017"
   }
 ]
