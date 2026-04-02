@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// 简易读取 .env 文件（避免引入 dotenv 额外包）
+// 简易读取 .env 文件
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const envPath = path.resolve(__dirname, '.env');
 let email = '';
@@ -21,11 +21,8 @@ try {
       if (k.trim() === 'VITE_PB_API_URL') apiUrl = v.join('=').trim().replace(/^['"]|['"]$/g, '');
     }
   });
-} catch (e) {
-  // .env 不存在或解析失败
-}
+} catch (e) {}
 
-// 支持环境变量兜底
 email = email || process.env.PB_ADMIN_EMAIL;
 password = password || process.env.PB_ADMIN_PASSWORD;
 apiUrl = apiUrl || process.env.VITE_PB_API_URL;
@@ -33,21 +30,59 @@ apiUrl = apiUrl || process.env.VITE_PB_API_URL;
 const pb = new PocketBase(apiUrl);
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
+// Helper to ensure collection exists and has all fields
+async function ensureCollection(name, defaultData) {
+  try {
+    const existing = await pb.collections.getOne(name);
+    console.log(`  - 发现现有 ${name} 表，由于保留数据要求，我们尝试更新增量字段...`);
+    const existingFieldNames = existing.fields.map(f => f.name);
+    let changed = false;
+    for (const f of defaultData.fields) {
+      if (!existingFieldNames.includes(f.name)) {
+         existing.fields.push(f);
+         changed = true;
+      }
+    }
+    if (changed) {
+       await pb.collections.update(name, existing);
+       console.log(`✅ ${name} 表结构更新成功！`);
+    } else {
+       console.log(`✅ ${name} 表结构已是最新的，无须更新。`);
+    }
+  } catch(e) {
+    console.log(`  - 未发现 ${name} 表，准备新建...`);
+    await pb.collections.create(defaultData);
+    console.log(`✅ ${name} 表创建成功！`);
+  }
+}
+
 async function run() {
-  console.log('=============== 修复并初始化 PocketBase 数据库 ===============');
+  console.log('=============== 初始化/更新 PocketBase 数据库 ===============');
 
   try {
     console.log('\n[1/3] 正在连接与验证...');
     await pb.collection('_superusers').authWithPassword(email, password);
     console.log('✅ 登录成功！');
 
-    console.log('\n[2/3] 清理上次未包含字段的空表...');
-    try { await pb.collections.delete('tasks'); console.log('  - 删除旧 tasks 表'); } catch (e) { }
-    try { await pb.collections.delete('recordings'); console.log('  - 删除旧 recordings 表'); } catch (e) { }
+    console.log('\n[2/3] 开始检查和创建 books 表...');
+    await ensureCollection('books', {
+      name: 'books',
+      type: 'base',
+      listRule: '', viewRule: '', createRule: '', updateRule: '', deleteRule: '',
+      fields: [
+        { name: 'bookId', type: 'text', required: true },
+        { name: 'title', type: 'text' },
+        { name: 'cover', type: 'text' },
+        { name: 'subject', type: 'text' },
+        { name: 'desc', type: 'text' },
+        { name: 'rewardPoints', type: 'number' },
+        { name: 'isArchived', type: 'bool' }
+      ]
+    });
 
-    console.log('\n[3/3] 正在使用新版语法 (fields) 重新建表...');
+    console.log('\n[3/3] 开始检查和更新其余表...');
 
-    await pb.collections.create({
+    await ensureCollection('tasks', {
       name: 'tasks',
       type: 'base',
       listRule: '', viewRule: '', createRule: '', updateRule: '', deleteRule: '',
@@ -67,12 +102,15 @@ async function run() {
         { name: 'completedAt', type: 'date' },
         { name: 'completedDuration', type: 'number' },
         { name: 'reviewed', type: 'bool' },
-        { name: 'returnHistory', type: 'json' }
+        { name: 'returnHistory', type: 'json' },
+        // 新增字段
+        { name: 'bookId', type: 'text' },
+        { name: 'chapterIndex', type: 'number' },
+        { name: 'isArchived', type: 'bool' }
       ]
     });
-    console.log('✅ tasks 表重新创建成功！(包含 16 个字段)');
 
-    await pb.collections.create({
+    await ensureCollection('recordings', {
       name: 'recordings',
       type: 'base',
       listRule: '', viewRule: '', createRule: '', updateRule: '', deleteRule: '',
@@ -83,12 +121,8 @@ async function run() {
         { name: 'duration', type: 'number' }
       ]
     });
-    console.log('✅ recordings 表重新创建成功！(包含 4 个字段)');
 
-    // --- events collection ---
-    try { await pb.collections.delete('events'); console.log('  - 删除旧 events 表'); } catch (e) { }
-
-    await pb.collections.create({
+    await ensureCollection('events', {
       name: 'events',
       type: 'base',
       listRule: '', viewRule: '', createRule: '', updateRule: '', deleteRule: '',
@@ -106,9 +140,8 @@ async function run() {
         { name: 'pointsAwarded', type: 'number' }
       ]
     });
-    console.log('✅ events 表创建成功！(包含 11 个字段)');
 
-    console.log('\n🎉 所有自动化建表流程结束，字段已完美生成！');
+    console.log('\n🎉 所有自动化建表/更新流程结束，未删除任何数据！');
 
   } catch (err) {
     if (err?.data?.data) {

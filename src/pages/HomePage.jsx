@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import useUserStore from '../stores/userStore'
 import useTaskStore from '../stores/taskStore'
 import useEventStore from '../stores/eventStore'
+import useBookStore from '../stores/bookStore'
 
 const taskRouteMap = {
   chinese_poem: '/task/poem/',
@@ -34,6 +35,8 @@ function formatTime(isoString) {
 
 export default function HomePage() {
   const user = useUserStore((s) => s.user)
+  const books = useBookStore((s) => s.books)
+  const allTasks = useTaskStore((s) => s.tasks)
   const tasks = useTaskStore((s) => s.getTodayTasks())
   const getCompletedCount = useTaskStore((s) => s.getCompletedCount)
   const getTotalCount = useTaskStore((s) => s.getTotalCount)
@@ -46,8 +49,14 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState('pending'); // 'pending', 'returned', 'completed'
   const [typeFilter, setTypeFilter] = useState('all');
   const [displayCount, setDisplayCount] = useState(5);
+  const [activeBook, setActiveBook] = useState(null);
+  const [isShelfCollapsed, setIsShelfCollapsed] = useState(false);
 
-  const filteredTasks = tasks.filter((t) => typeFilter === 'all' || t.type === typeFilter);
+  const filteredTasks = tasks.filter((t) => {
+    if (typeFilter !== 'all' && t.type !== typeFilter) return false;
+    if (activeBook && t.bookId !== activeBook.bookId && t.bookId !== activeBook.id) return false;
+    return true;
+  });
 
   const pendingTasks = filteredTasks.filter((t) => !t.completed && (!t.returnHistory || t.returnHistory.length === 0));
   const returnedTasks = filteredTasks.filter((t) => !t.completed && t.returnHistory && t.returnHistory.length > 0);
@@ -191,6 +200,77 @@ export default function HomePage() {
           )}
         </div>
       </section>
+
+      {/* Books Shelf */}
+      {books.length > 0 && (
+        <div style={{ marginBottom: 24 }}>
+          <div 
+            onClick={() => setIsShelfCollapsed(!isShelfCollapsed)}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', marginBottom: '12px', padding: '0 4px', userSelect: 'none' }}
+          >
+            <h3 style={{ margin: 0, fontSize: 16, fontWeight: 800, color: '#1e293b' }}>我的书架</h3>
+            <span className="material-symbols-outlined" style={{ color: '#94a3b8', fontSize: 22, transition: 'transform 0.3s', transform: isShelfCollapsed ? 'rotate(180deg)' : 'rotate(0)' }}>
+              expand_less
+            </span>
+          </div>
+          
+          <div className="hide-scroll-x" style={{ display: isShelfCollapsed ? 'none' : 'flex', gap: 16, overflowX: 'auto', width: '100%', paddingBottom: 8, msOverflowStyle: 'none', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
+            <style dangerouslySetInnerHTML={{__html: `.hide-scroll-x::-webkit-scrollbar { display: none; }`}} />
+            {books.map(b => {
+               // Calculate progress: completed items in THIS book
+               const bookTasks = allTasks.filter(t => t.bookId === b.bookId || t.bookId === b.id)
+               const completedTasks = bookTasks.filter(t => t.completed)
+               const bookCompleted = completedTasks.length
+               const totalBookTasks = bookTasks.length || 1 // Avoid divide by zero
+               const progressVal = Math.round((bookCompleted / totalBookTasks) * 100)
+               
+               const dates = completedTasks.map(t => new Date(t.completedAt).getTime()).filter(t => !isNaN(t))
+               let lastOpenText = '尚未开始'
+               if (dates.length > 0) {
+                 const maxDate = new Date(Math.max(...dates))
+                 const now = new Date()
+                 const diffDays = Math.floor((now - maxDate) / (1000 * 60 * 60 * 24))
+                 if (diffDays === 0) lastOpenText = '今天阅读过'
+                 else if (diffDays === 1) lastOpenText = '昨天阅读过'
+                 else lastOpenText = `${diffDays}天前阅读过`
+               }
+               
+               const isSelected = activeBook?.id === b.id
+               
+               return (
+                 <div key={b.id} onClick={() => setActiveBook(isSelected ? null : b)} style={{ 
+                   minWidth: 116, maxWidth: 116, background: isSelected ? '#f8fafc' : '#fff',
+                   borderRadius: '4px 12px 12px 4px', padding: '8px',
+                   border: isSelected ? '2px solid #2b9dee' : '1px solid #e2e8f0', 
+                   borderLeft: isSelected ? '6px solid #2b9dee' : '6px solid #cbd5e1',
+                   boxShadow: isSelected ? '0 6px 16px rgba(43,157,238,0.2)' : '2px 4px 12px rgba(0,0,0,0.04)',
+                   flexShrink: 0, cursor: 'pointer', transition: 'all 0.2s', position: 'relative',
+                   display: 'flex', flexDirection: 'column'
+                 }}>
+                    <div style={{ width: '100%', height: 136, borderRadius: 6, background: 'rgba(43,157,238,0.05)', color: '#2b9dee', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginBottom: 8 }}>
+                       {b.cover?.startsWith('http') || b.cover?.startsWith('/') ? (
+                          <img src={b.cover} alt="cover" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                       ) : (
+                          <span className="material-symbols-outlined" style={{ fontSize: 40 }}>{b.cover || 'book'}</span>
+                       )}
+                    </div>
+                    <h4 style={{ margin: '0 0 4px 0', fontSize: 12, fontWeight: 800, color: '#1e293b', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: 1.3 }}>{b.title}</h4>
+                    
+                    <div style={{ marginTop: 'auto' }}>
+                      <p style={{ margin: '4px 0 6px', fontSize: 10, color: '#94a3b8', fontWeight: 600 }}>{lastOpenText}</p>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+                        <span style={{ fontSize: 11, fontWeight: 800, color: '#10b981' }}>完成 {progressVal}%</span>
+                      </div>
+                      <div style={{ width: '100%', height: 4, background: '#f1f5f9', borderRadius: 2, overflow: 'hidden' }}>
+                        <div style={{ width: `${progressVal}%`, height: '100%', background: '#10b981', borderRadius: 2, transition: 'width 0.3s' }} />
+                      </div>
+                    </div>
+                 </div>
+               )
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Type Filter */}
       <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '12px', marginBottom: '16px', msOverflowStyle: 'none', scrollbarWidth: 'none' }}>

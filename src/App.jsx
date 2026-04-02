@@ -14,6 +14,7 @@ import SettingsPage from './pages/SettingsPage'
 import CalendarHistoryPage from './pages/CalendarHistoryPage'
 import useRecordStore from './stores/recordStore'
 import useTaskStore from './stores/taskStore'
+import useBookStore from './stores/bookStore'
 import RewardEffect from './components/RewardEffect'
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
   useEffect(() => {
     async function init() {
       await fetchTasks()
+      useBookStore.getState().fetchBooks() // Fetch books without blocking
       // Note: records load asynchronously, but we don't strictly block render on audio blobs,
       // However, we wait for it so the UI has the remoteUrls populated.
       await loadFromDB()

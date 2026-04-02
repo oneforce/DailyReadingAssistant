@@ -90,8 +90,8 @@ export default function Layout() {
       </header>
 
       {/* Main Content */}
-      <main style={{ flex: 1, display: 'flex', justifyContent: 'center', padding: '24px 16px', paddingBottom: 80 }}>
-        <div style={{ maxWidth: 960, width: '100%' }}>
+      <main style={{ flex: 1, display: 'flex', justifyContent: 'center', padding: '24px 16px', paddingBottom: 80, minWidth: 0 }}>
+        <div style={{ maxWidth: 960, width: '100%', minWidth: 0 }}>
           <Outlet />
         </div>
       </main>

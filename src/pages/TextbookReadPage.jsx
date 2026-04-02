@@ -5,9 +5,12 @@ import useRecordStore from '../stores/recordStore'
 import useEventStore from '../stores/eventStore'
 import { AudioRecorder, formatTime } from '../utils/recorder'
 import BackButton from '../components/BackButton'
-const ROUND_COUNT = 3
-const ROUND_LABELS = ['第一遍', '第二遍', '第三遍']
-const ROUND_COLORS = ['#2b9dee', '#8b5cf6', '#f59e0b']
+const ROUND_COLORS = ['#2b9dee', '#8b5cf6', '#f59e0b', '#10b981', '#ef4444', '#ec4899']
+
+const getRoundLabel = (i) => {
+  const cnNums = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
+  return `第${cnNums[i] || (i + 1)}遍`
+}
 
 function RoundCard({ round, label, color, audioUrl, duration, isActiveRecording, recordTime, onRecord, onPlay, isPlaying, isViewOnly }) {
   const hasAudio = !!audioUrl
@@ -91,10 +94,12 @@ export default function TextbookReadPage() {
   const addRecording = useRecordStore((s) => s.addRecording)
   const getRecording = useRecordStore((s) => s.getRecording)
 
+  const roundCount = task?.content?.totalReadCount || 3
+
   // Per-round state
   const [recordings, setRecordings] = useState(() => {
     const recs = []
-    for (let i = 0; i < ROUND_COUNT; i++) {
+    for (let i = 0; i < roundCount; i++) {
       const rec = getRecording(taskId, `textbook-${i + 1}`)
       recs.push({ url: rec?.url || null, duration: rec?.duration || 0 })
     }
@@ -236,7 +241,7 @@ export default function TextbookReadPage() {
           {/* Progress indicator */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: '#334155' }}>
-              录音进度 {completedRounds}/{ROUND_COUNT}
+              录音进度 {completedRounds}/{roundCount}
             </span>
             {!isViewOnly && (
               <button onClick={handleSubmit} disabled={!allComplete} style={{
@@ -254,14 +259,13 @@ export default function TextbookReadPage() {
             )}
           </div>
 
-          {/* Round cards */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {ROUND_LABELS.map((label, i) => (
+            {Array.from({ length: roundCount }).map((_, i) => (
               <RoundCard
                 key={i}
                 round={i + 1}
-                label={label}
-                color={ROUND_COLORS[i]}
+                label={getRoundLabel(i)}
+                color={ROUND_COLORS[i % ROUND_COLORS.length]}
                 audioUrl={recordings[i]?.url}
                 duration={recordings[i]?.duration}
                 isActiveRecording={activeRound === i}

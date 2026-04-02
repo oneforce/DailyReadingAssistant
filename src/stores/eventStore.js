@@ -122,6 +122,33 @@ const useEventStore = create((set, get) => ({
     }
   },
 
+  // ========== Core: track a book completion event ==========
+  trackBookCompletion: async (bookId, bookTitle, page) => {
+    const now = new Date()
+    const eventData = {
+      eventType: 'special',
+      page: page || 'Books',
+      target: 'book',
+      action: 'complete',
+      taskId: bookId || '',
+      recordingUrl: '',
+      startTime: now.toISOString(),
+      duration: 0,
+      isSpecial: true,
+      specialReason: `完成书籍: ${bookTitle || bookId}`,
+      pointsAwarded: 200,
+    }
+
+    // Always reward 200 points for completing a book
+    set({ pendingReward: { amount: 200, type: 'special' } })
+
+    try {
+      await pb.collection('events').create(eventData)
+    } catch (e) {
+      console.warn('Book completion event tracking failed:', e)
+    }
+  },
+
   // ========== Reward rolling logic ==========
   _rollNormalReward: () => {
     const todayPts = getTodayNormalPoints()

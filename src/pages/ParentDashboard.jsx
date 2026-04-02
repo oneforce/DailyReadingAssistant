@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import useTaskStore from '../stores/taskStore'
 import useRecordStore from '../stores/recordStore'
 import BackButton from '../components/BackButton'
+import BookManagement from '../components/BookManagement'
+
 const taskRouteMap = {
   chinese_poem: '/task/poem/',
   chinese_text: '/task/textbook/',
@@ -240,11 +242,26 @@ export default function ParentDashboard() {
             }}>
             已评价
           </button>
+          <button 
+            onClick={() => setActiveTab('books')}
+            style={{
+              padding: '8px 4px', background: 'none', border: 'none',
+              borderBottom: activeTab === 'books' ? '3px solid #8b5cf6' : '3px solid transparent',
+              color: activeTab === 'books' ? '#8b5cf6' : '#64748b',
+              fontWeight: activeTab === 'books' ? 800 : 700, fontSize: 16, cursor: 'pointer',
+              marginBottom: -1
+            }}>
+            书籍管理
+          </button>
         </div>
 
-        {/* Task review cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 20 }}>
-          {displayTasks.length === 0 && (
+        {activeTab === 'books' ? (
+           <BookManagement />
+        ) : (
+          <>
+            {/* Task review cards */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 20 }}>
+              {displayTasks.length === 0 && (
             <p style={{ textAlign: 'center', color: '#94a3b8', padding: 20 }}>
               {activeTab === 'pending' ? '暂无待评价的内容' : '暂无已评价的内容'}
             </p>
@@ -419,6 +436,8 @@ export default function ParentDashboard() {
           }}>
             全部提交评价
           </button>
+        )}
+        </>
         )}
       </main>
     </div>

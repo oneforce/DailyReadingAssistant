@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import pb from '../utils/pb'
 import useEventStore from './eventStore'
+import useBookStore from './bookStore'
 
 const useTaskStore = create(
   persist(
@@ -13,7 +14,8 @@ const useTaskStore = create(
         try {
           const records = await pb.collection('tasks').getFullList();
           // Ensure structure is clean for frontend mapped logic
-          set({ tasks: records.map(r => ({ ...r, reviewed: r.reviewed || false })) });
+          const activeTasks = records.filter(r => !r.isArchived).map(r => ({ ...r, reviewed: r.reviewed || false }))
+          set({ tasks: activeTasks });
         } catch (e) {
           console.error('Failed to fetch tasks from PocketBase', e);
         }
@@ -21,6 +23,18 @@ const useTaskStore = create(
       
       getTodayTasks: () => get().tasks,
       getTaskById: (id) => get().tasks.find((t) => t.taskId === id),
+      
+      archiveTasksByBook: async (bookId) => {
+        try {
+          const tasksToArchive = get().tasks.filter(t => t.bookId === bookId)
+          for (const t of tasksToArchive) {
+             await pb.collection('tasks').update(t.id, { isArchived: true })
+          }
+          set({ tasks: get().tasks.filter(t => t.bookId !== bookId) })
+        } catch(e) {
+          console.error("Failed to archive tasks", e)
+        }
+      },
       
       // Daily task limits (configurable in settings)
       dailyLimits: { maxPerType: 2, maxDailyTasks: 6 },
@@ -112,6 +126,27 @@ const useTaskStore = create(
           useEventStore.getState().trackTaskCompletion(id, '任务处理')
         } catch (e) {
           console.warn('Silent failure tracking task completion event', e)
+        }
+
+        // Check Book Completion
+        const completedTaskInfo = get().tasks.find(t => t.taskId === id);
+        if (completedTaskInfo && completedTaskInfo.bookId) {
+            const allBookTasks = get().tasks.filter(t => t.bookId === completedTaskInfo.bookId);
+            const allCompleted = allBookTasks.every(t => t.completed);
+            
+            // Re-check the previous state before this task was completed
+            const tasksBeforeComplete = s.tasks.filter(t => t.bookId === completedTaskInfo.bookId);
+            const wasCompletedBefore = tasksBeforeComplete.every(t => t.completed);
+
+            if (allCompleted && !wasCompletedBefore) {
+               // The book was just completed!
+               const bookObj = useBookStore.getState().books.find(b => b.bookId === completedTaskInfo.bookId || b.id === completedTaskInfo.bookId);
+               useEventStore.getState().trackBookCompletion(
+                   completedTaskInfo.bookId, 
+                   bookObj?.title || '', 
+                   'Home/Task'
+               );
+            }
         }
 
         // Remote Sync to pocketbase
@@ -445,6 +480,28 @@ const useTaskStore = create(
           }
         } catch(e) { console.error('Clear Tasks Error', e) }
         set(() => ({ tasks: [] }));
+      },
+
+      assignTasksToBook: async (taskIds, bookId) => {
+        const s = get();
+        const updatedTasks = s.tasks.map(t => {
+           if (taskIds.includes(t.taskId)) {
+              return { ...t, bookId };
+           }
+           return t;
+        });
+        
+        set({ tasks: updatedTasks });
+
+        // Sync to remote
+        try {
+           for (let tid of taskIds) {
+              const taskObj = s.tasks.find(t => t.taskId === tid);
+              if (taskObj && taskObj.id) {
+                 await pb.collection('tasks').update(taskObj.id, { bookId });
+              }
+           }
+        } catch(e) { console.error('Assign Tasks Error', e) }
       },
       
     }),

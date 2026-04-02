@@ -93,3 +93,39 @@ export async function uploadToQiniu(blob, taskId, reqId) {
     return null
   }
 }
+
+/**
+ * Upload an image file to Qiniu
+ * @param {File} file - image file
+ * @param {string} prefix - prefix name e.g. 'book-cover'
+ * @returns {Promise<{key: string, url: string} | null>}
+ */
+export async function uploadImageToQiniu(file, prefix = 'image') {
+  const config = getConfig()
+  if (!config) return null
+
+  const token = await generateUploadToken(config)
+  const ext = file.name ? file.name.split('.').pop() : 'jpg'
+  const ts = Date.now()
+  const filename = `${prefix}-${ts}.${ext}`
+  const key = buildKey(filename)
+
+  const formData = new FormData()
+  formData.append('file', file, filename)
+  formData.append('token', token)
+  formData.append('key', key)
+
+  try {
+    const res = await fetch(UPLOAD_URL, { method: 'POST', body: formData })
+    if (!res.ok) {
+      const text = await res.text()
+      console.error('[Qiniu] Image Upload failed:', res.status, text)
+      return null
+    }
+    const data = await res.json()
+    return { key: data.key, url: getFileUrl(data.key) }
+  } catch (e) {
+    console.error('[Qiniu] Image Upload error:', e)
+    return null
+  }
+}

@@ -22,7 +22,7 @@ function Particle({ x, y, color, size, delay, duration, distance }) {
   )
 }
 
-function SmallEffect({ onDone }) {
+function SmallEffect({ onDone, amount = 10 }) {
   const [particles] = useState(() =>
     Array.from({ length: SMALL_PARTICLE_COUNT }, (_, i) => ({
       id: i,
@@ -77,7 +77,7 @@ function SmallEffect({ onDone }) {
             background: 'linear-gradient(135deg, #fbbf24, #f59e0b)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
             filter: 'drop-shadow(0 2px 8px rgba(245,158,11,0.5))',
-          }}>+10</span>
+          }}>+{amount}</span>
           <span style={{
             fontSize: 16, fontWeight: 800, color: '#fcd34d', opacity: 0.9,
           }}>积分</span>
@@ -87,7 +87,7 @@ function SmallEffect({ onDone }) {
   )
 }
 
-function BigEffect({ onDone }) {
+function BigEffect({ onDone, amount = 100 }) {
   const [particles] = useState(() =>
     Array.from({ length: BIG_PARTICLE_COUNT }, (_, i) => ({
       id: i,
@@ -144,11 +144,11 @@ function BigEffect({ onDone }) {
           background: 'linear-gradient(135deg, #fbbf24, #f43f5e, #8b5cf6)',
           WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
           filter: 'drop-shadow(0 4px 16px rgba(244,63,94,0.5))',
-        }}>+100</span>
+        }}>+{amount}</span>
         <span style={{
           fontSize: 16, fontWeight: 800, color: '#f59e0b',
           background: 'rgba(251,191,36,0.15)', padding: '4px 16px', borderRadius: 20,
-        }}>🏆 特殊奖励积分!</span>
+        }}>{amount >= 200 ? '🏅 完结一本大书！' : '🏆 特殊奖励积分!'}</span>
       </div>
     </div>
   )
@@ -172,7 +172,7 @@ export default function RewardEffect() {
 
   if (!showEffect) return null
 
-  return showEffect.amount === 100
-    ? <BigEffect onDone={handleDone} />
-    : <SmallEffect onDone={handleDone} />
+  return showEffect.amount >= 100
+    ? <BigEffect onDone={handleDone} amount={showEffect.amount} />
+    : <SmallEffect onDone={handleDone} amount={showEffect.amount} />
 }
