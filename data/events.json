@@ -2094,5 +2094,37 @@
     "startTime": "2026-04-02 11:53:03.438Z",
     "target": "那一刻，我长大了",
     "taskId": ""
+  },
+  {
+    "action": "tab_switch",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "rb12zp9se2m9g2j",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-02 11:53:26.700Z",
+    "target": "Tab_completed",
+    "taskId": ""
+  },
+  {
+    "action": "review_task",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "75ng442ifek9p2y",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-02 11:53:28.244Z",
+    "target": "我的“奸商”老爸",
+    "taskId": ""
   }
 ]
