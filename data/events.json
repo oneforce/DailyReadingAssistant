@@ -1822,5 +1822,21 @@
     "startTime": "2026-04-02 10:17:37.524Z",
     "target": "recording",
     "taskId": "template-text-003"
+  },
+  {
+    "action": "start_task",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "i8k970877bkvc06",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-02 10:17:57.280Z",
+    "target": "读人民英雄纪念碑碑文有感",
+    "taskId": ""
   }
 ]
