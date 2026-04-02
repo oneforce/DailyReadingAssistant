@@ -150,14 +150,14 @@ async function run() {
     console.log('');
   }
 
-  // Step 2: Restore records
+  // Step 2: Restore records (upsert: create or update)
   console.log('--- Restoring Records ---');
   const files = fs.readdirSync(DATA_DIR).filter(
     f => f.endsWith('.json') && !f.startsWith('_'),
   );
 
-  let totalRestored = 0;
-  let totalSkipped = 0;
+  let totalCreated = 0;
+  let totalUpdated = 0;
   let totalFailed = 0;
 
   for (const file of files) {
@@ -166,8 +166,8 @@ async function run() {
 
     console.log(`\n  📦 ${collectionName} (${records.length} records)`);
 
-    let restored = 0;
-    let skipped = 0;
+    let created = 0;
+    let updated = 0;
     let failed = 0;
 
     for (const record of records) {
@@ -180,34 +180,46 @@ async function run() {
         data[key] = value;
       }
 
+      // Try create first
       const res = await createRecord(collectionName, data, token);
       if (res.ok) {
-        restored++;
+        created++;
       } else {
-        const status = res.status;
-        if (status === 400) {
-          skipped++; // likely duplicate
+        // Create failed (likely duplicate) → try PATCH update
+        const patchRes = await fetch(
+          `${PB_URL}/api/collections/${encodeURIComponent(collectionName)}/records/${record.id}`,
+          {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: token,
+            },
+            body: JSON.stringify(data),
+          },
+        );
+        if (patchRes.ok) {
+          updated++;
         } else {
           failed++;
           if (failed <= 3) {
-            const body = await res.text();
-            console.error(`    ❌ Record ${record.id}: HTTP ${status} - ${body}`);
+            const body = await patchRes.text();
+            console.error(`    ❌ Record ${record.id}: ${body}`);
           }
         }
       }
     }
 
-    console.log(`    ✅ ${restored} restored | ⏭️ ${skipped} skipped | ❌ ${failed} failed`);
-    totalRestored += restored;
-    totalSkipped += skipped;
+    console.log(`    ✅ ${created} created | 🔄 ${updated} updated | ❌ ${failed} failed`);
+    totalCreated += created;
+    totalUpdated += updated;
     totalFailed += failed;
   }
 
   console.log(`\n${'='.repeat(50)}`);
   console.log(`  Restore Summary:`);
-  console.log(`    ✅ Restored: ${totalRestored}`);
-  console.log(`    ⏭️  Skipped:  ${totalSkipped}`);
-  console.log(`    ❌ Failed:   ${totalFailed}`);
+  console.log(`    ✅ Created: ${totalCreated}`);
+  console.log(`    🔄 Updated: ${totalUpdated}`);
+  console.log(`    ❌ Failed:  ${totalFailed}`);
   console.log(`${'='.repeat(50)}`);
 }
 
