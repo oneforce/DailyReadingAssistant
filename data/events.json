@@ -1870,5 +1870,21 @@
     "startTime": "2026-04-02 10:18:35.523Z",
     "target": "他辣怕了",
     "taskId": ""
+  },
+  {
+    "action": "record_complete",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 152,
+    "eventType": "recording",
+    "id": "8f30e99305964n9",
+    "isSpecial": false,
+    "page": "TextbookReadPage",
+    "pointsAwarded": 0,
+    "recordingUrl": "blob:https://yuxi.uyhnm.cn/ef78814e-a856-4f53-994e-975ece579edd",
+    "specialReason": "",
+    "startTime": "2026-04-02 10:19:20.393Z",
+    "target": "recording",
+    "taskId": "template-text-008"
   }
 ]
