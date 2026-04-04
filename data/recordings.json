@@ -25,5 +25,59 @@
     "id": "855esv4054t8ym0",
     "subKey": "textbook-3",
     "taskId": "template-text-017"
+  },
+  {
+    "audio": "template_text_021_textbook_1_inywst4h4m.webm",
+    "collectionId": "pbc_392670462",
+    "collectionName": "recordings",
+    "duration": 28,
+    "id": "3qhnai601wp7953",
+    "subKey": "textbook-1",
+    "taskId": "template-text-021"
+  },
+  {
+    "audio": "template_text_023_textbook_1_k2efl3qjgq.webm",
+    "collectionId": "pbc_392670462",
+    "collectionName": "recordings",
+    "duration": 7,
+    "id": "9juc2pl55g45499",
+    "subKey": "textbook-1",
+    "taskId": "template-text-023"
+  },
+  {
+    "audio": "task_sentence_001_s_0_x6z9zufokx.webm",
+    "collectionId": "pbc_392670462",
+    "collectionName": "recordings",
+    "duration": 6,
+    "id": "54758ie1b9o3x3j",
+    "subKey": "s-0",
+    "taskId": "task-sentence-001"
+  },
+  {
+    "audio": "task_sentence_001_s_1_eghzl6oqi9.webm",
+    "collectionId": "pbc_392670462",
+    "collectionName": "recordings",
+    "duration": 5,
+    "id": "h5d5nnfy0jtbnri",
+    "subKey": "s-1",
+    "taskId": "task-sentence-001"
+  },
+  {
+    "audio": "task_sentence_001_s_2_vz4ndwpxc3.webm",
+    "collectionId": "pbc_392670462",
+    "collectionName": "recordings",
+    "duration": 4,
+    "id": "rd71e3gmb65785r",
+    "subKey": "s-2",
+    "taskId": "task-sentence-001"
+  },
+  {
+    "audio": "task_sentence_001_s_3_ukf0nq9mtz.webm",
+    "collectionId": "pbc_392670462",
+    "collectionName": "recordings",
+    "duration": 4,
+    "id": "8hrwlg7hg227771",
+    "subKey": "s-3",
+    "taskId": "task-sentence-001"
   }
 ]
