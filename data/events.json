@@ -3198,5 +3198,21 @@
     "startTime": "2026-04-03 11:59:53.608Z",
     "target": "Tab_completed",
     "taskId": ""
+  },
+  {
+    "action": "start_task",
+    "collectionId": "pbc_1687431684",
+    "collectionName": "events",
+    "duration": 0,
+    "eventType": "click",
+    "id": "j6pay39ney6ue8z",
+    "isSpecial": false,
+    "page": "HomePage",
+    "pointsAwarded": 0,
+    "recordingUrl": "",
+    "specialReason": "",
+    "startTime": "2026-04-08 08:11:17.529Z",
+    "target": "那一刻，我长大了",
+    "taskId": ""
   }
 ]
