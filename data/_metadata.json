@@ -1,5 +1,5 @@
 {
-  "exportTime": "2026-04-28T01:11:35.135Z",
+  "exportTime": "2026-04-28T01:15:44.812Z",
   "pbUrl": "http://106.54.239.44:9001",
   "collections": [
     {
@@ -28,5 +28,5 @@
       "type": "base"
     }
   ],
-  "durationSeconds": 0.3
+  "durationSeconds": 0.2
 }
